@@ -1,0 +1,16 @@
+<!--
+<path v-bind:d="'M ' + lng(start[0]) + ',' + lat(start[1]) + ' L ' + lng(target[0]) + ',' + lat(target[1]) + ''" style="stroke-dasharray: 5; stroke-linecap: rounds; fill: none; stroke: #1B7340; stroke-width: 3px;"/>
+
+<circle v-bind:cx="lng(start[0])" v-bind:cy="lat(start[1])" r="3px" style="fill: #11542d;"/>
+<circle v-bind:cx="lng(target[0])" v-bind:cy="lat(target[1])" r="3px" style="fill: #11542d;"/>-->
+
+
+
+<g>
+  <rect x="0" y="0" width="25px" height="12px" style="fill: #1B7340;" />
+  <g>
+    <text style="alignment-baseline: hanging; text-anchor: middle; font-family: 'Jost'; font-size: 5px; fill: #fff;" y="1px" x="12.5px">
+      Wiesbadendfgdfg
+    </text>
+  </g>
+</g>

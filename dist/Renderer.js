@@ -18,6 +18,8 @@ const components = (function() {
 })();
 
 
+
+
 export default class Renderer extends EventEmitter {
   constructor(template, docIndex = 0) {
     super();
@@ -117,7 +119,6 @@ export default class Renderer extends EventEmitter {
       defsContainer.append(fontSheet);
       this.Vue.$forceUpdate();
     });
-
 
     // Initalize Vue.js Instance with
     this.Vue = new Vue({

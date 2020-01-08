@@ -14,7 +14,7 @@ const app = new Vue({
   data: {
     menuOpen: true,
     templateUrls: [
-      //'data/templates/support/template.json',
+      //'data/templates/profile/dieuhrtickt/template.json',
       'data/templates/date-2/template.json',
       'data/templates/map/template.json',
       'data/templates/date/template.json',
@@ -29,7 +29,10 @@ const app = new Vue({
       'data/templates/pride/template.json',
       'data/templates/quote/template.json',
       'data/templates/sentence/template.json',
-      'data/templates/flyer2911/template.json'
+      //'data/templates/support/template.json',
+      //'data/templates/flyer2911/template.json',
+      'data/templates/thanks/template.json',
+      'data/templates/map1701/template.json'
     ],
     __docIndex: 0,
     __activeTemplate: null,
@@ -50,6 +53,20 @@ const app = new Vue({
   computed: {
 
   },
+  mounted() {
+    const loadChecker = setInterval(function() {
+      console.log("!!!");
+      if (app.templates) {
+        clearInterval(loadChecker);
+
+        const loadTemplateId = Number(location.hash.substring(1));
+
+        if (loadTemplateId) {
+          app.openTemplate(loadTemplateId - 1);
+        }
+      }
+    }, 10);
+  },
   methods: {
     menuAction() {
       this.menuOpen = !this.menuOpen;
@@ -60,6 +77,11 @@ const app = new Vue({
       const selectedLi = event.target.closest('li');
       // Get index from selected list item
       const templateIndex = Array.from(selectedLi.parentNode.children).indexOf(selectedLi);
+
+      this.openTemplate(templateIndex);
+    },
+    openTemplate(templateIndex) {
+      location.hash = templateIndex + 1;
 
       const template = this.templates[templateIndex];
 
@@ -122,8 +144,8 @@ const app = new Vue({
       this.__renderedBlob = null;
       this.renderedImage = null;
 
-      const endpoint = 'https://api.fridaysforfuture.de:65324/emulate';
-      //const endpoint = 'http://localhost:65324/emulate'
+      const endpoint = 'https://api.fridaysforfuture.de/emulate';
+      //const endpoint = 'http://localhost:443/emulate'
 
       const format = this.__activeTemplate.type ? this.__activeTemplate.type : "png";
 
@@ -136,9 +158,12 @@ const app = new Vue({
           template: this.__activeTemplate,
           doc: this.__docIndex,
           data: dataset,
-          renderings: 1
+          renderings: 1,
+          delay: 250
         })
       });
+
+      console.log(dataset);
 
       const blob = await (await response1).blob();
       const url = URL.createObjectURL(blob);
@@ -163,7 +188,8 @@ const app = new Vue({
           template: this.__activeTemplate,
           doc: this.__docIndex,
           data: dataset,
-          renderings: 1
+          renderings: 1,
+          delay: 0
         })
       });
 
@@ -227,8 +253,6 @@ const app = new Vue({
     }
   }
 });
-
-
 
 
 

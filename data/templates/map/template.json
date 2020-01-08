@@ -2,6 +2,7 @@
   "name": "Map",
   "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/map/template.json",
   "preview": "data/templates/map/preview.jpg",
+  "type": "jpg",
   "documents": [
     {
       "width": 1200,

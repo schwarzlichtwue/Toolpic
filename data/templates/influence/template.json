@@ -2,6 +2,7 @@
   "name": "Influence",
   "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/influence/template.json",
   "preview": "data/templates/influence/preview.jpg",
+  "type": "jpg",
   "documents": [
     {
       "width": 1200,

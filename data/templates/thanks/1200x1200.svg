@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+
+     viewBox="0 0 1200 1200"
+     version="1.1">
+
+  <g class="main">
+
+
+
+    <image v-if="typeof backgroundImage == 'object'" v-bind:xlink:href="backgroundImage.data" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
+    <rect x="0" y="0" width="100%" height="100%" style="fill: #000; opacity: 0.3;" v-if="effects[0]" />
+
+
+    <text x="600" y="100" style="alignment-baseline: hanging; text-anchor: middle; font-size: 130px; font-family: 'Jost-300'; fill: #fff;">
+      #NEUSTARTKLIMA
+    </text>
+
+
+    <text x="600" y="450" style="alignment-baseline: hanging; text-anchor: middle; font-size: 200px; font-family: 'Jost-600'; fill: #fff;">
+      DANKE AN
+    </text>
+
+
+    <defs>
+      <mask id="count-mask" x="0" y="0" width="100" height="100">
+        <text x="600" y="700" style="alignment-baseline: hanging; text-anchor: middle; font-size: 220px; font-family: 'Jost-900'; fill: #fff;">
+          {{ count }}
+        </text>
+      </mask>
+    </defs>
+
+    <g v-bind:style="{ transform: 'scale(' + (1050 / (textInfo(count,  { fontFamily: 'Jost-900', fontSize: '220px'}).width + 100)) + ')', 'transform-origin': '600px 630px' }">
+      <rect v-bind:x="600 - (textInfo(count,  { fontFamily: 'Jost-900', fontSize: '220px'}).width + 100) / 2" v-bind:y="700 - 50" v-bind:width="textInfo(count,  { fontFamily: 'Jost-900', fontSize: '220px'}).width + 100" v-bind:height="textInfo(count,  { fontFamily: 'Jost-900', fontSize: '220px'}).height - 30" style="fill: #fff;" />
+
+      <g mask="url(#count-mask)" >
+        <image v-if="typeof backgroundImage == 'object'" v-bind:xlink:href="backgroundImage.data" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
+        <rect x="0" y="0" width="100%" height="100%" style="fill: #000; opacity: 0.3;" v-if="effects[0]" />
+      </g>
+    </g>
+
+    <image xlink:href="data/resources/logo.svg" x="25" y="1025" height="150" width="150" filter="url(#dropshadow)" />
+
+
+    <defs>
+      <filter id="dropshadow" height="130%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="7"/> <!-- stdDeviation is how much to blur -->
+        <feOffset dx="0" dy="10" result="offsetblur"/> <!-- how much to offset -->
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.6"/> <!-- slope is the opacity of the shadow -->
+        </feComponentTransfer>
+        <feMerge>
+          <feMergeNode/> <!-- this contains the offset blurred image -->
+          <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+        </feMerge>
+      </filter>
+    </defs>
+
+
+  </g>
+
+
+</svg>

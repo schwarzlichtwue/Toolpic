@@ -2,6 +2,7 @@
   "name": "Letter",
   "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/letter/template.json",
   "preview": "data/templates/letter/preview.jpg",
+  "type": "jpg",
   "documents": [
     {
       "width": 1200,

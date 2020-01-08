@@ -2,6 +2,7 @@
   "name": "Support",
   "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/pride/template.json",
   "preview": "data/templates/pride/preview.jpg",
+  "type": "jpg",
   "documents": [
     {
       "width": 1200,

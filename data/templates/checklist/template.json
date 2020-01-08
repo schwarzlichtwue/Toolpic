@@ -2,6 +2,7 @@
   "name": "Checklist",
   "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/checklist/template.json",
   "preview": "data/templates/checklist/preview.jpg",
+  "type": "jpg",
   "documents": [
     {
       "width": 1200,

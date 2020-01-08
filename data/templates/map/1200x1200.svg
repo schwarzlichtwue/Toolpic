@@ -58,7 +58,7 @@
       </g>
     </g>
 
-      <image v-bind:xlink:href="typeof logo == 'object' ? logo.data : logo" x="25" y="925" height="250" width="250" filter="url(#dropshadow)" />
+    <image v-bind:xlink:href="typeof logo == 'object' ? logo.data : logo" x="25" y="925" height="250" width="250" filter="url(#dropshadow)" />
 
 
   </g>

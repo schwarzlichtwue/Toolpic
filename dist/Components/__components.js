@@ -2,6 +2,7 @@ import Line from './Line/Line.js'
 import Text from './Text/Text.js'
 import Selection from './Selection/Selection.js'
 import Map from './Map/Map.js'
+import FittingMap from './FittingMap/FittingMap.js'
 import Number from './Number/Number.js'
 import Checklist from './Checklist/Checklist.js'
 import Multiselection from './Multiselection/Multiselection.js'
@@ -11,6 +12,7 @@ const ComponentsObj = {
   Text,
   Selection,
   Map,
+  FittingMap,
   Number,
   Checklist,
   Multiselection
@@ -62,4 +64,4 @@ export function createArray(renderInstance, description = false) {
   }).filter(entry => entry);
 }
 
-export { Line, Text, Selection, Map, Number, Checklist, Multiselection }
+export { Line, Text, Selection, Map, FittingMap, Number, Checklist, Multiselection }

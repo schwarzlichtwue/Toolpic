@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+
+     viewBox="0 0 1200 1200"
+     version="1.1">
+
+     <defs>
+       <filter id="dropshadow" height="130%">
+         <feGaussianBlur in="SourceAlpha" stdDeviation="7"/> <!-- stdDeviation is how much to blur -->
+         <feOffset dx="0" dy="0" result="offsetblur"/> <!-- how much to offset -->
+         <feComponentTransfer>
+           <feFuncA type="linear" slope="0.4"/> <!-- slope is the opacity of the shadow -->
+         </feComponentTransfer>
+         <feMerge>
+           <feMergeNode/> <!-- this contains the offset blurred image -->
+           <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+         </feMerge>
+       </filter>
+
+       <filter id="dropshadow2" height="130%">
+         <feGaussianBlur in="SourceAlpha" stdDeviation="7"/> <!-- stdDeviation is how much to blur -->
+         <feOffset dx="0" dy="0" result="offsetblur"/> <!-- how much to offset -->
+         <feComponentTransfer>
+           <feFuncA type="linear" slope="0.2"/> <!-- slope is the opacity of the shadow -->
+         </feComponentTransfer>
+         <feMerge>
+           <feMergeNode/> <!-- this contains the offset blurred image -->
+           <feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+         </feMerge>
+       </filter>
+     </defs>
+
+  <g class="main">
+
+
+    <!--mapbox://styles/maurice-conrad/ck4h5ihuh7dw01cmgy8rbagri-->
+    <image v-bind:xlink:href="'https://api.mapbox.com/styles/v1/maurice-conrad/ck4h5ihuh7dw01cmgy8rbagri/static/' + route.center.lng + ',' + route.center.lat + ',' + route.zoom + '/' + route.width + 'x' + route.height + '@2x?access_token=' + route.accessToken" width="1200" height="1200" />
+
+    <g>
+      <path v-bind:d="'M ' + lng(route.data.start[0], route.meta, 1200) + ',' + lat(route.data.start[1], route.meta, 1200) + ' L ' + lng(route.data.target[0], route.meta, 1200) + ',' + lat(route.data.target[1], route.meta, 1200) + ''" style="stroke-dasharray: 50; stroke-linecap: rounds; fill: none; stroke: #1DA64A; stroke-width: 30px;"/>
+
+
+
+      <circle v-bind:cx="lng(route.data.start[0], route.meta, 1200)" v-bind:cy="lat(route.data.start[1], route.meta, 1200)" r="30px" style="fill: #127733;"/>
+      <circle v-bind:cx="lng(route.data.target[0], route.meta, 1200)" v-bind:cy="lat(route.data.target[1], route.meta, 1200)" r="30px" style="fill: #127733;"/>
+
+
+      <!--<g v-if="Math.abs(lat(route.data.start[1], route.meta, 1200) - lat(route.data.target[1], route.meta, 1200)) > 600">
+        <g v-if="lng(route.data.start[0], route.meta, 1200) < (1200 / 2)" filter="url(#dropshadow)" v-dynamic v-bind:style="{ 'transform-origin': lng(route.data.start[0], route.meta, 1200) + 'px 215px' }" data-dynamic-width="700" data-dynamic-height="300">
+          <g style="transform: translate(60px, 0);">
+            <multiline-text v-bind:x="lng(route.data.start[0], route.meta, 1200)" v-bind:y="lat(route.data.start[1], route.meta, 1200) - 135" padding="20 20 20 20" v-bind:text="[location]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + lng(route.data.start[0], route.meta, 1200) + 'px ' + (lat(route.data.start[1], route.meta, 1200) - 135 + 65) + 'px; transform: rotate(2deg);'"></multiline-text>
+            <multiline-text v-bind:x="lng(route.data.start[0], route.meta, 1200)" v-bind:y="lat(route.data.start[1], route.meta, 1200)" padding="20 20 20 20" v-bind:text="[rail]" lineheight="1.1" background="#1B7340" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + lng(route.data.start[0], route.meta, 1200) + 'px ' + (lat(route.data.start[1], route.meta, 1200) + 65) + 'px; transform: rotate(-3deg);'"></multiline-text>
+            <multiline-text v-bind:x="lng(route.data.start[0], route.meta, 1200)" v-bind:y="lat(route.data.start[1], route.meta, 1200) + 135" padding="20 20 20 20" v-bind:text="[time]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + lng(route.data.start[0], route.meta, 1200) + 'px ' + (lat(route.data.start[1], route.meta, 1200) + 135 + 65) + 'px; transform: rotate(3deg) translate(0, -30px);'"></multiline-text>
+          </g>
+        </g>
+
+        <g v-else filter="url(#dropshadow)" v-bind:style="{ 'transform-origin': (1200 - (lng(route.data.start[0], route.meta, 1200))) + 'px 215px' }" v-dynamic v-bind:style="{ 'transform-origin': lng(route.data.start[0], route.meta, 1200) + 'px 215px' }" data-dynamic-width="700" data-dynamic-height="300">
+          <g v-bind:style="{ transform: 'translate(' + (200 * (Math.abs(lng(route.data.start[0], route.meta, 1200) - 600) / 600)) + 'px, 0)' }">
+            <multiline-text v-bind:x="(1200 - (lng(route.data.start[0], route.meta, 1200)))" v-bind:y="lat(route.data.start[1], route.meta, 1200) - 135" align="right" padding="20 20 20 20" v-bind:text="[location]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + lng(route.data.start[0], route.meta, 1200) + 'px ' + ((lat(route.data.start[1], route.meta, 1200) - 135) + 65) + 'px; transform: rotate(2deg);'"></multiline-text>
+            <multiline-text v-bind:x="1200 - (lng(route.data.start[0], route.meta, 1200))" v-bind:y="lat(route.data.start[1], route.meta, 1200)" align="right" padding="20 20 20 20" v-bind:text="[rail]" lineheight="1.1" background="#1B7340" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + lng(route.data.start[0], route.meta, 1200) + 'px ' + ((lat(route.data.start[1], route.meta, 1200)) + 65) + 'px; transform: rotate(-3deg) translate(0, -30px);'"></multiline-text>
+            <multiline-text v-bind:x="1200 - (lng(route.data.start[0], route.meta, 1200))" v-bind:y="lat(route.data.start[1], route.meta, 1200) + 135" align="right" padding="20 20 20 20" v-bind:text="[time]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + lng(route.data.start[0], route.meta, 1200) + 'px ' + ((lat(route.data.start[1], route.meta, 1200) + 135) + 65) + 'px; transform: rotate(3deg) translate(0, -30px);'"></multiline-text>
+          </g>
+        </g>
+
+        <g v-if="lng(route.data.start[0], route.meta, 1200) < (1200 / 2)" style="transform: translate(-301px, 0);" filter="url(#dropshadow)">
+          <path style="fill: #13502D;" v-bind:d="'M ' + lng(route.data.target[0], route.meta, 1200) + ',' + (lat(route.data.target[1], route.meta, 1200) - (401 / 2 - 35)) + ' L ' + (lng(route.data.target[0], route.meta, 1200) + 301) + ',' + lat(route.data.target[1], route.meta, 1200) + ' ' + lng(route.data.target[0], route.meta, 1200) + ',' + (lat(route.data.target[1], route.meta, 1200) + (401 / 2 - 35)) + ''"/>
+
+          <image v-bind:x="lng(route.data.target[0], route.meta, 1200) - (401 / 2)" v-bind:y="lat(route.data.target[1], route.meta, 1200) - (401 / 2)" width="401" height="401" xlink:href="data/templates/map1701/Mainz.svg"/>
+        </g>
+        <g v-else style="transform: translate(301px, 0);" filter="url(#dropshadow)">
+          <path style="fill: #13502D;" v-bind:d="'M ' + lng(route.data.target[0], route.meta, 1200) + ',' + (lat(route.data.target[1], route.meta, 1200) - (401 / 2 - 35)) + ' L ' + (lng(route.data.target[0], route.meta, 1200) - 301) + ',' + lat(route.data.target[1], route.meta, 1200) + ' ' + lng(route.data.target[0], route.meta, 1200) + ',' + (lat(route.data.target[1], route.meta, 1200) + (401 / 2 - 35)) + ''"/>
+
+          <image v-bind:x="lng(route.data.target[0], route.meta, 1200) - (401 / 2)" v-bind:y="lat(route.data.target[1], route.meta, 1200) - (401 / 2)" width="401" height="401" xlink:href="data/templates/map1701/Mainz.svg"/>
+        </g>
+
+      </g>
+
+      <g v-else>
+        <g style="transform: translate(0px, 0);">
+          <multiline-text v-bind:x="lng(route.data.start[0], route.meta, 1200)" v-bind:y="lat(route.data.start[1], route.meta, 1200) - 135" padding="20 20 20 20" v-bind:text="[location]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + lng(route.data.start[0], route.meta, 1200) + 'px ' + (lat(route.data.start[1], route.meta, 1200) - 135 + 65) + 'px; transform: rotate(2deg);'"></multiline-text>
+          <multiline-text v-bind:x="lng(route.data.start[0], route.meta, 1200)" v-bind:y="lat(route.data.start[1], route.meta, 1200)" padding="20 20 20 20" v-bind:text="[rail]" lineheight="1.1" background="#1B7340" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + lng(route.data.start[0], route.meta, 1200) + 'px ' + (lat(route.data.start[1], route.meta, 1200) + 65) + 'px; transform: rotate(-3deg);'"></multiline-text>
+          <multiline-text v-bind:x="lng(route.data.start[0], route.meta, 1200)" v-bind:y="lat(route.data.start[1], route.meta, 1200) + 135" padding="20 20 20 20" v-bind:text="[time]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + lng(route.data.start[0], route.meta, 1200) + 'px ' + (lat(route.data.start[1], route.meta, 1200) + 135 + 65) + 'px; transform: rotate(3deg) translate(0, -30px);'"></multiline-text>
+        </g>
+      </g>
+
+    </g>-->
+
+
+
+    <!--Left/Right-->
+    <g v-if="Math.abs(lat(route.data.start[1], route.meta, 1200) - lat(route.data.target[1], route.meta, 1200)) / Math.abs(lng(route.data.start[0], route.meta, 1200) - lng(route.data.target[0], route.meta, 1200)) >= 1">
+
+      <!--Start Position-->
+      <g>
+        <!--Right-->
+        <g v-if="lng(route.data.start[0], route.meta, 1200) <= (1200 / 2)">
+
+          <g v-pos data-rel="0 0.5" v-bind:data-pos="(lng(route.data.start[0], route.meta, 1200) + 50) + ' ' + lat(route.data.start[1], route.meta, 1200)">
+            <g v-dynamic data-dynamic-origin="none" data-dynamic-width="400" data-dynamic-height="300" style="transform-origin: 0px 0px;">
+              <multiline-text v-bind:x="0" v-bind:y="0" padding="20 20 20 20" v-bind:text="[location]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (textInfo(location, { fontFamily: 'Jost', fontSize: '80px' }).width + 40) + 'px 65px; transform: rotate(2deg);'"></multiline-text>
+              <multiline-text v-bind:x="0" v-bind:y="135" padding="20 20 20 20" v-bind:text="[rail]" lineheight="1.1" background="#1B7340" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (textInfo(rail, { fontFamily: 'Jost', fontSize: '80px' }).width + 40) + 'px 100px; transform: rotate(-3deg) translate(0, -30px);'"></multiline-text>
+              <multiline-text v-bind:x="0" v-bind:y="270" padding="20 20 20 20" v-bind:text="[time]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (textInfo(time, { fontFamily: 'Jost', fontSize: '80px' }).width + 40) + 'px 335px; transform: rotate(3deg) translate(0, -30px);'"></multiline-text>
+            </g>
+          </g>
+
+        </g>
+        <!--Left-->
+        <g v-else>
+
+          <g v-pos data-rel="1 0.5" v-bind:data-pos="(lng(route.data.start[0], route.meta, 1200) - 50) + ' ' + lat(route.data.start[1], route.meta, 1200)">
+            <g v-dynamic data-dynamic-origin="none" data-dynamic-width="400" data-dynamic-height="300" style="transform-origin: 1200px 0px;">
+              <multiline-text v-bind:x="0" v-bind:y="0" padding="20 20 20 20" align="right" v-bind:text="[location]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (1200) + 'px 65px; transform: rotate(2deg);'"></multiline-text>
+              <multiline-text v-bind:x="0" v-bind:y="135" padding="20 20 20 20" align="right" v-bind:text="[rail]" lineheight="1.1" background="#1B7340" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (1200) + 'px 100px; transform: rotate(-3deg) translate(0, -30px);'"></multiline-text>
+              <multiline-text v-bind:x="0" v-bind:y="270" padding="20 20 20 20" align="right" v-bind:text="[time]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (1200) + 'px 335px; transform: rotate(3deg) translate(0, -30px);'"></multiline-text>
+            </g>
+          </g>
+
+        </g>
+      </g>
+
+      <!--Target Position-->
+      <g>
+        <!--Right-->
+        <g v-if="lng(route.data.target[0], route.meta, 1200) <= (1200 / 2)">
+
+          <g v-pos data-rel="0 0.5" v-bind:data-pos="(lng(route.data.target[0], route.meta, 1200)) + ' ' + lat(route.data.target[1], route.meta, 1200)" filter="url(#dropshadow)">
+            <path style="fill: #13502D;" d="M 150,70 l -250,130 250,130"/>
+            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="typeof targetlogo == 'object' ? targetlogo.data : targetlogo"/>
+          </g>
+
+        </g>
+        <!--Left-->
+        <g v-else>
+
+          <g v-pos data-rel="1 0.5" v-bind:data-pos="(lng(route.data.target[0], route.meta, 1200)) + ' ' + lat(route.data.target[1], route.meta, 1200)" filter="url(#dropshadow)">
+            <path style="fill: #13502D;" d="M 250,70 l 250,130 -250,130"/>
+            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="typeof targetlogo == 'object' ? targetlogo.data : targetlogo"/>
+          </g>
+
+        </g>
+      </g>
+
+    </g>
+    <g v-else>
+
+      <!--Start Position-->
+      <g>
+        <!--Bottom-->
+        <g v-if="lat(route.data.start[1], route.meta, 1200) <= (1200 / 2)">
+
+          <g v-pos v-bind:data-rel="'' + (lng(route.data.start[0], route.meta, 1200) < 600 ? 0.3 : 0.7) + ' 0'" v-bind:data-pos="lng(route.data.start[0], route.meta, 1200) + ' ' + (lat(route.data.start[1], route.meta, 1200) + 50)">
+            <g v-dynamic data-dynamic-origin="none" data-dynamic-width="500" data-dynamic-height="300" style="transform-origin: 0px 0px;">
+              <multiline-text v-bind:x="0" v-bind:y="0" padding="20 20 20 20" v-bind:text="[location]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (textInfo(location, { fontFamily: 'Jost', fontSize: '80px' }).width + 40) + 'px 65px; transform: rotate(2deg);'"></multiline-text>
+              <multiline-text v-bind:x="0" v-bind:y="135" padding="20 20 20 20" v-bind:text="[rail]" lineheight="1.1" background="#1B7340" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (textInfo(rail, { fontFamily: 'Jost', fontSize: '80px' }).width + 40) + 'px 100px; transform: rotate(-3deg) translate(0, -30px);'"></multiline-text>
+              <multiline-text v-bind:x="0" v-bind:y="270" padding="20 20 20 20" v-bind:text="[time]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (textInfo(time, { fontFamily: 'Jost', fontSize: '80px' }).width + 40) + 'px 335px; transform: rotate(3deg) translate(0, -30px);'"></multiline-text>
+            </g>
+          </g>
+
+        </g>
+        <!--Top-->
+        <g v-else>
+
+          <g v-pos v-bind:data-rel="'' + (lng(route.data.start[0], route.meta, 1200) < 600 ? 0.3 : 0.7) + ' 1'" v-bind:data-pos="lng(route.data.start[0], route.meta, 1200) + ' ' + (lat(route.data.start[1], route.meta, 1200) - 50)">
+            <g v-dynamic data-dynamic-origin="none" data-dynamic-width="500" data-dynamic-height="300" style="transform-origin: 0px 0px;">
+              <multiline-text v-bind:x="0" v-bind:y="0" padding="20 20 20 20" v-bind:text="[location]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (textInfo(location, { fontFamily: 'Jost', fontSize: '80px' }).width + 40) + 'px 65px; transform: rotate(2deg);'"></multiline-text>
+              <multiline-text v-bind:x="0" v-bind:y="135" padding="20 20 20 20" v-bind:text="[rail]" lineheight="1.1" background="#1B7340" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (textInfo(rail, { fontFamily: 'Jost', fontSize: '80px' }).width + 40) + 'px 100px; transform: rotate(-3deg) translate(0, -30px);'"></multiline-text>
+              <multiline-text v-bind:x="0" v-bind:y="270" padding="20 20 20 20" v-bind:text="[time]" lineheight="1.1" background="#1DA64A" v-bind:css="'font-size: 80px; font-family: Jost; fill: #fff; transform-origin: ' + (textInfo(time, { fontFamily: 'Jost', fontSize: '80px' }).width + 40) + 'px 335px; transform: rotate(3deg) translate(0, -30px);'"></multiline-text>
+            </g>
+          </g>
+
+        </g>
+      </g>
+
+      <!--Target Position-->
+      <g>
+        <!--Bottom-->
+        <g v-if="lat(route.data.target[1], route.meta, 1200) <= (1200 / 2)">
+
+          <g v-pos data-rel="0.5 0" v-bind:data-pos="(lng(route.data.target[0], route.meta, 1200)) + ' ' + lat(route.data.target[1], route.meta, 1200)" filter="url(#dropshadow)">
+            <path style="fill: #13502D;" d="M 70,150 l 130,-250 130,250"/>
+            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="typeof targetlogo == 'object' ? targetlogo.data : targetlogo"/>
+          </g>
+
+        </g>
+        <!--Top-->
+        <g v-else>
+
+          <g v-pos data-rel="0.5 1" v-bind:data-pos="(lng(route.data.target[0], route.meta, 1200)) + ' ' + lat(route.data.target[1], route.meta, 1200)" filter="url(#dropshadow)">
+            <path style="fill: #13502D;" d="M 70,250 l 130,250 130,-250"/>
+            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="typeof targetlogo == 'object' ? targetlogo.data : targetlogo"/>
+          </g>
+
+        </g>
+      </g>
+    </g>
+
+    <image xlink:href="data/resources/logo.svg" x="1010" y="1010" height="165" width="165" filter="url(#dropshadow)" />
+
+  </g>
+
+
+</svg>

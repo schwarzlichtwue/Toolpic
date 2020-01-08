@@ -2,6 +2,7 @@
   "name": "Sentence",
   "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/sentence/template.json",
   "preview": "data/templates/sentence/preview.jpg",
+  "type": "jpg",
   "documents": [
     {
       "width": 1200,

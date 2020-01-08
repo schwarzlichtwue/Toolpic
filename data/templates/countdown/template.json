@@ -2,6 +2,7 @@
   "name": "Countdown",
   "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/countdown/template.json",
   "preview": "data/templates/countdown/preview.jpg",
+  "type": "jpg",
   "documents": [
     {
       "width": 1200,

@@ -60,7 +60,7 @@
     	S201.18,1103.71,278.51,760.3S696.92,201.18,1040.33,278.51z"/>
     <text>
       <textPath xlink:href="#SVGID_x5F_1_x5F_" startOffset="98.1487%">
-        <tspan class="st3" style="fill: #90D3ED; font-family:'Jost-Bold'; font-size:236px; letter-spacing:46;">{{ date }}</tspan>
+        <tspan class="st3" style="fill: #90D3ED; font-family:'Jost-Bold'; font-size:236px; letter-spacing:46;">170px{{ date }}</tspan>
       </textPath>
     </text>
 
@@ -70,7 +70,7 @@
       <text style="font-family: 'Jost-700'; font-size: 230px; fill: #90D3ED; letter-spacing: 40px;">
         <textPath xlink:href="#circle1" style="alignment-baseline: hanging;">
           <tspan x="0" dy="210">
-            {{ date }}
+            29. NOVEMBER
           </tspan>
         </textPath>
       </text>
@@ -90,12 +90,12 @@
         x="-20px"
         y="40"
         class="st3 st4 st5 st6 subtitle"
-        v-bind:style="[(lang === 'de') ? {} : {'letter-spacing': '0', 'font-size': '140px',}]">{{ first }}</text>
+        v-bind:style="[(lang === 'de') ? {} : {'letter-spacing': '0', 'font-size': '170px',}]">KLIMA</text>
       <text
         transform="matrix(1 0 0 1 436.5146 1516.5264)"
         y="40"
         class="st3 st4 st5 st6 subtitle"
-        v-bind:style="[(lang === 'de') ? {} : {'letter-spacing': '0', 'font-size': '140px',}]">{{ second }}</text>
+        v-bind:style="[(lang === 'de') ? {} : {'letter-spacing': '0', 'font-size': '170px',}]">STREIK</text>
     </g>
 
     <path class="st2" d="M163,1409"/>

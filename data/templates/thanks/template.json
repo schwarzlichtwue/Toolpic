@@ -1,0 +1,81 @@
+{
+  "name": "Thanks",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/thanks/template.json",
+  "preview": "data/templates/thanks/preview.jpg",
+  "type": "jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/thanks/1200x1200.svg",
+      "alias": "Facebook, Instagram"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost-300",
+      "src": "fonts/Jost/Jost-300-Light.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-600",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-900",
+      "src": "fonts/Jost/Jost-900-Black.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Selection",
+      "description": "Background",
+      "key": "backgroundImage",
+      "default": {
+        "data": "data/templates/thanks/bg.jpg"
+      },
+      "properties": {
+        "items": [
+          {
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Checklist",
+      "description": "Effekte",
+      "key": "effects",
+      "default": [true],
+      "properties": {
+        "fields": [
+          "Verdunkelt"
+        ]
+      }
+    },
+    {
+      "type": "Number",
+      "description": "Position",
+      "key": "pos",
+      "default": 0,
+      "properties": {
+        "value": 0,
+        "max": 1,
+        "min": -1,
+        "step": 0.05,
+        "kind": "slider"
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Count",
+      "key": "count",
+      "default": "100 000",
+      "properties": {
+
+      }
+    }
+  ]
+}

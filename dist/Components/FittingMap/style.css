@@ -1,0 +1,28 @@
+.map-controls {
+  margin: 10px 0;
+}
+.map-controls .btn-map {
+  background-color: #2a8a56;
+  height: 30px;
+  width: 30px;
+  display: inline-block;
+  margin: 0 5px;
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.map-controls .btn-map.btn-remove {
+  background-image: url('data/resources/back-arrow.svg');
+}
+.map-controls .btn-map.btn-clear {
+  background-image: url('data/resources/garbage.svg');
+}
+.map-controls .btn-map.btn-refresh {
+  background-image: url('data/resources/refresh.svg');
+}
+.route-map {
+  width: 400px;
+  height: 400px;
+  display: block;
+}

@@ -1,0 +1,37 @@
+{
+  "name": "#DieUhrTickt PB",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/profile/template.json",
+  "preview": "data/templates/profile/dieuhrtickt/preview.jpg",
+  "documents": [
+    {
+      "width": 500,
+      "height": 500,
+      "src": "data/templates/profile/dieuhrtickt/document.svg",
+      "alias": "1:1"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost-Black",
+      "src": "fonts/Jost/Jost-900-Black.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Selection",
+      "description": "Background",
+      "key": "pic",
+      "default": {
+        "data": "data/templates/profile/fr/bg.jpg"
+      },
+      "properties": {
+        "items": [
+          {
+            "type": "file"
+          }
+        ]
+      }
+    }
+  ]
+}

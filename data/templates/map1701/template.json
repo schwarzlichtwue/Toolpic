@@ -1,0 +1,124 @@
+{
+  "name": "Anreise 17.01",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/map1701/template.json",
+  "preview": "data/templates/map1701/preview.jpg",
+  "type": "jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/map1701/1200x1200.svg",
+      "alias": "Facebook, Instagram"
+    },
+    {
+      "width": 1200,
+      "height": 675,
+      "src": "data/templates/map1701/1200x675.svg",
+      "alias": "Twitter"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-400",
+      "src": "fonts/Jost/Jost-400-Book.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-300",
+      "src": "fonts/Jost/Jost-300-Light.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-700",
+      "src": "fonts/Jost/Jost-700-Bold.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-500",
+      "src": "fonts/Jost/Jost-500-Medium.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "FittingMap",
+      "description": "Route",
+      "key": "route",
+      "default": {
+        "meta": {
+          "viewBox": {
+            "lng": 7.476163636365953,
+            "lat": 50.471356791452365,
+            "diffLng": 0.9121227272693773,
+            "diffLat": -0.5841018647024043
+          }
+        },
+        "data": {
+          "start": [7.59778, 50.35972],
+          "target": [8.26667, 50]
+        },
+        "center": {
+          "lng": 7.932225000000017,
+          "lat": 50.180198591917616
+        },
+        "zoom": 8.175300022697638,
+        "width": 375,
+        "height": 375,
+        "accessToken": "pk.eyJ1IjoibWF1cmljZS1jb25yYWQiLCJhIjoiY2lpM25jbXVpMDExZXQ4bTBmYzd5cjBhbSJ9.zW17SmAFJRJPf8VjAxpang"
+      },
+      "properties": {
+        "fieldsDefaults": ["Koblenz", "Mainz"]
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Location",
+      "key": "location",
+      "default": "Koblenz Hbf",
+      "properties": {}
+    },
+    {
+      "type": "Line",
+      "description": "Rail",
+      "key": "rail",
+      "default": "Gleis 4a",
+      "properties": {}
+    },
+    {
+      "type": "Line",
+      "description": "Uhrzeit",
+      "key": "time",
+      "default": "10:30 Uhr",
+      "properties": {}
+    },
+    {
+      "type": "Selection",
+      "description": "Logo",
+      "key": "targetlogo",
+      "default": "data/templates/map1701/Mainz.svg",
+      "properties": {
+        "mime": "image/png",
+        "width": 400,
+        "height": 400,
+        "items": [
+          {
+            "type": "value",
+            "value": "data/templates/map1701/Mainz.svg"
+          },
+          {
+            "type": "value",
+            "value": "data/templates/map1701/Magdeburg.png"
+          },
+          {
+            "type": "file"
+          }
+        ]
+      }
+    }
+  ]
+}
