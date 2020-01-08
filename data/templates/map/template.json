@@ -1,0 +1,193 @@
+{
+  "name": "Map",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/map/template.json",
+  "preview": "data/templates/map/preview.jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/map/1200x1200.svg",
+      "alias": "Facebook, Instagram"
+    },
+    {
+      "width": 1200,
+      "height": 675,
+      "src": "data/templates/map/1200x675.svg",
+      "alias": "Twitter"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-400",
+      "src": "fonts/Jost/Jost-400-Book.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-300",
+      "src": "fonts/Jost/Jost-300-Light.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-700",
+      "src": "fonts/Jost/Jost-700-Bold.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-500",
+      "src": "fonts/Jost/Jost-500-Medium.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Map",
+      "description": "Route",
+      "key": "route",
+      "default": {
+        "geo": {
+          "type": "FeatureCollection",
+          "features": [
+            {
+              "type": "Feature",
+              "properties": {},
+              "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                  [8.25937899416931, 50.001861599138806],
+                  [8.26009891253824, 50.00201584445429],
+                  [8.26086682546645, 50.00226263593228],
+                  [8.261490754723553, 50.00201584445429],
+                  [8.261970700302868, 50.00217008927487],
+                  [8.26273861323773, 50.002879609077894],
+                  [8.262834602349557, 50.003342333744996],
+                  [8.265762270397943, 50.006303666124694],
+                  [8.266530183326154, 50.0067663578277],
+                  [8.266962134346187, 50.00722904508103],
+                  [8.267250101695083, 50.00766088249418],
+                  [8.26725010166723, 50.008061870926866],
+                  [8.268257987385056, 50.009141438484875],
+                  [8.269121889431773, 50.008956371482725],
+                  [8.269697824129622, 50.0084937008574],
+                  [8.270561726176368, 50.00775341860049],
+                  [8.271425628223085, 50.006735511871625],
+                  [8.271569611894193, 50.0062728198717],
+                  [8.271592424583531, 50.006135071396784],
+                  [8.271771471271848, 50.00590492222912],
+                  [8.272278770233129, 50.005367903219906],
+                  [8.273114321467489, 50.004533593928926],
+                  [8.27348733540424, 50.004073279155506],
+                  [8.273800667115609, 50.003718450161074],
+                  [8.273666381834317, 50.00351705953108],
+                  [8.273233685657033, 50.0033732085966],
+                  [8.272353372750644, 50.003095095568256],
+                  [8.271980358813892, 50.003008784300505],
+                  [8.271681947661165, 50.002816980930874],
+                  [8.271547662636578, 50.00265394746447],
+                  [8.27139845706023, 50.002510093947166],
+                  [8.271204489811794, 50.00240460109259],
+                  [8.2708762375388, 50.00227992742299],
+                  [8.270934382427384, 50.002093758925014],
+                  [8.271113429124028, 50.00194990373137],
+                  [8.27136707860467, 50.00149915466727],
+                  [8.271546125293014, 50.00104840137951],
+                  [8.271814695333774, 50.000731912501294],
+                  [8.271978821470299, 50.00054010004726],
+                  [8.271879323046193, 50.000210838183705],
+                  [8.27178979970202, 49.99998066065115],
+                  [8.271909164166459, 49.9996833463737],
+                  [8.272132972526862, 49.99936684851181],
+                  [8.272162813647128, 49.999146257858314],
+                  [8.271700276357876, 49.99901198479131],
+                  [8.27138694464503, 49.99906953043853]
+                ]
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [8.25937899416931, 50.001861599138806]
+              },
+              "properties": {
+                "title": "Start",
+                "icon": "airfield-15"
+              }
+            },
+            {
+              "type": "Feature",
+              "geometry": {
+                "type": "Point",
+                "coordinates": [8.27138694464503, 49.99906953043853]
+              },
+              "properties": {
+                "title": "End",
+                "icon": "embassy"
+              }
+            }
+          ]
+        },
+        "center": {
+          "lng": 8.27,
+          "lat": 50.0035
+        },
+        "zoom": 14,
+        "width": 600,
+        "height": 600,
+        "accessToken": "pk.eyJ1IjoibWF1cmljZS1jb25yYWQiLCJhIjoiY2lpM25jbXVpMDExZXQ4bTBmYzd5cjBhbSJ9.zW17SmAFJRJPf8VjAxpang"
+      },
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Location",
+      "key": "location",
+      "default": "Bahnhofsplatz",
+      "properties": {}
+    },
+    {
+      "type": "Line",
+      "description": "Location detail",
+      "key": "locationdetail",
+      "default": "Mainz",
+      "properties": {}
+    },
+    {
+      "type": "Line",
+      "description": "Date",
+      "key": "date",
+      "default": "05. Juli | 20 UHR",
+      "properties": {}
+    },
+    {
+      "type": "Selection",
+      "description": "Logo",
+      "key": "logo",
+      "default": "data/resources/logo.svg",
+      "properties": {
+        "mime": "image/png",
+        "width": 200,
+        "height": 200,
+        "items": [
+          {
+            "type": "value",
+            "value": "data/resources/logo-2.svg"
+          },
+          {
+            "type": "value",
+            "value": "data/resources/logo.svg"
+          },
+          {
+            "type": "file"
+          }
+        ]
+      }
+    }
+  ]
+}

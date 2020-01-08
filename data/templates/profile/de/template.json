@@ -1,0 +1,92 @@
+{
+  "name": "Profile Picture",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/profile/template.json",
+  "preview": "data/templates/profile/de/preview.jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/profile/de/document.svg",
+      "alias": "1:1"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost-600",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-700",
+      "src": "fonts/Jost/Jost-700-Bold.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-400",
+      "src": "fonts/Jost/Jost-400-Book.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Selection",
+      "description": "Background",
+      "key": "pic",
+      "default": {
+        "data": "data/templates/profile/fr/bg.jpg"
+      },
+      "properties": {
+        "items": [
+          {
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Hashtag",
+      "key": "hashtag",
+      "default": "#NeustartKlima",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Langugage",
+      "key": "lang",
+      "default": "de",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Date",
+      "key": "date",
+      "default": "29. NOVEMBER",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "First Red",
+      "key": "first",
+      "default": "KLIMA",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Second Red",
+      "key": "second",
+      "default": "STREIK",
+      "properties": {
+
+      }
+    }
+  ]
+}

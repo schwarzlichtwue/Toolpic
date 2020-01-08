@@ -1,0 +1,135 @@
+{
+  "name": "Quote",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/fff/template.json",
+  "preview": "data/templates/fff/preview.jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/fff/1200x1200.svg",
+      "alias": "Facebook, Instagram"
+    },
+    {
+      "width": 1200,
+      "height": 675,
+      "src": "data/templates/fff/1200x675.svg",
+      "alias": "Twitter"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-400",
+      "src": "fonts/Jost/Jost-400-Book.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Merriweather",
+      "src": "fonts/Merriweather Sans.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "selection",
+      "description": "Background",
+      "key": "backgroundImage",
+      "default": {
+        "value": "data/templates/fff/default.jpg"
+      },
+      "properties": {
+        "items": [
+          {
+            "type": "value",
+            "value": "#1DA64A",
+            "render": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxREE2NEEiLz48L3N2Zz4="
+          },
+          {
+            "type": "value",
+            "value": "#1B7340",
+            "render": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxQjczNDAiLz48L3N2Zz4="
+          },
+          {
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "type": "selection",
+      "description": "Text Background",
+      "key": "textBg",
+      "default": "#1B7340",
+      "properties": {
+        "items": [
+          {
+            "type": "value",
+            "value": "#1B7340",
+            "render": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxQjczNDAiLz48L3N2Zz4="
+          },
+          {
+            "type": "value",
+            "value": "#1DA64A",
+            "render": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxREE2NEEiLz48L3N2Zz4="
+          }
+        ]
+      }
+    },
+    {
+      "type": "number",
+      "description": "Position",
+      "key": "pos",
+      "default": 0,
+      "properties": {
+        "value": 0,
+        "max": 1,
+        "min": -1,
+        "step": 0.05,
+        "kind": "slider"
+      }
+    },
+    {
+      "type": "text",
+      "description": "Title",
+      "key": "title",
+      "default": ["WIR STREIKEN", "BIS IHR", "HANDELT!"],
+      "properties": {
+
+      }
+    },
+    {
+      "type": "text",
+      "description": "Subtitle",
+      "key": "subtitle",
+      "default": ["“Warum für eine Zukunft", "lernen die es nicht", "mehr geben wird?”"]
+    },
+    {
+      "type": "selection",
+      "description": "Logo",
+      "key": "logo",
+      "properties": {
+        "items": [
+          {
+            "type": "value",
+            "value": "sharepic/resources/logo.svg"
+          },
+          {
+            "type": "value",
+            "value": "sharepic/resources/logo-2.svg"
+          },
+          {
+            "type": "value",
+            "value": "sharepic/resources/logo-3.svg"
+          },
+          {
+            "type": "file"
+          }
+        ]
+      }
+    }
+  ]
+}

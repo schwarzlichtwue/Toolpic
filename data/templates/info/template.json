@@ -1,0 +1,81 @@
+{
+  "name": "Info",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/info/template.json",
+  "preview": "data/templates/info/preview.jpg",
+  "type": "jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/info/1200x1200.svg",
+      "alias": "Facebook, Instagram"
+    },
+    {
+      "width": 1200,
+      "height": 675,
+      "src": "data/templates/info/1200x675.svg",
+      "alias": "Twitter"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Merriweather",
+      "src": "fonts/Merriweather Sans.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Line",
+      "description": "Subtitle",
+      "key": "subtitle",
+      "default": "FridaysForFuture fordert:"
+    },
+    {
+      "type": "Text",
+      "description": "Title",
+      "key": "title",
+      "default": ["Einhaltung der", "Nettonull für", "Treibhausgase", "bis 2035."],
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Description",
+      "key": "description",
+      "default": "AUS DEN “FORDERUNGEN FÜR DEN UMWELTSCHUTZ”"
+    },
+    {
+      "type": "Line",
+      "description": "Organisation",
+      "key": "organisation",
+      "default": "#FridaysForFuture"
+    },
+    {
+      "type": "Selection",
+      "description": "Logo",
+      "key": "logo",
+      "default": "data/resources/logo.svg",
+      "properties": {
+        "mime": "image/png",
+        "width": 200,
+        "height": 200,
+        "items": [
+          {
+            "type": "value",
+            "value": "data/resources/logo.svg"
+          },
+          {
+            "type": "file"
+          }
+        ]
+      }
+    }
+  ]
+}

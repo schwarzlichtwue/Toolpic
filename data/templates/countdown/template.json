@@ -1,0 +1,109 @@
+{
+  "name": "Countdown",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/countdown/template.json",
+  "preview": "data/templates/countdown/preview.jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/countdown/1200x1200.svg",
+      "alias": "Facebook, Instagram"
+    },
+    {
+      "width": 1200,
+      "height": 675,
+      "src": "data/templates/countdown/1200x675.svg",
+      "alias": "Twitter"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost-700",
+      "src": "fonts/Jost/Jost-700-Bold.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-600",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-400",
+      "src": "fonts/Jost/Jost-400-Book.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Number",
+      "description": "Countdown",
+      "key": "countdown",
+      "default": "0",
+      "properties": {
+        "length": 3,
+        "value": 0
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Info 1",
+      "key": "info1",
+      "default": "Mainzer",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Info 2",
+      "key": "info2",
+      "default": "Klimastreik",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Description",
+      "key": "description",
+      "default": "DAYS REMAINING",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Shader Text",
+      "key": "shadertext",
+      "default": "FINAL COUNTDOWN · FINAL COUNTDOWN · FINAL COUNTDOWN",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Subtitle",
+      "key": "subtitle",
+      "default": "05.07.2019 | fridaysforfuture.de | #actnow",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Selection",
+      "description": "Logo",
+      "key": "logo",
+      "default": "data/resources/logo.svg",
+      "properties": {
+        "mime": "image/png",
+        "width": 200,
+        "height": 200,
+        "items": [
+          {
+            "type": "file"
+          }
+        ]
+      }
+    }
+  ]
+}

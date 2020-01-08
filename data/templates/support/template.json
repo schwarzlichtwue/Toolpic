@@ -1,0 +1,153 @@
+{
+  "name": "Support",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/pride/template.json",
+  "preview": "data/templates/pride/preview.jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/support/1200x1200.svg",
+      "alias": "Facebook, Instagram"
+    },
+    {
+      "width": 1200,
+      "height": 675,
+      "src": "data/templates/support/1200x675.svg",
+      "alias": "Twitter"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost-500",
+      "src": "fonts/Jost/Jost-500-Medium.ttf",
+      "mime": "font/truetype"
+    },
+
+    {
+      "name": "Jost-400",
+      "src": "fonts/Jost/Jost-400-Book.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-200",
+      "src": "fonts/Jost/Jost-200-Thin.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Multiselection",
+      "description": "Labels",
+      "key": "labels",
+      "default": [],
+      "properties": {
+        "once": true,
+        "uplaod": true,
+        "items": [
+          {
+            "render": "data/resources/support-logos/seebruecke.jpg",
+            "value": "data/resources/support-logos/seebruecke.jpg",
+            "label": "Seebrücke"
+          },
+          {
+            "render": "data/resources/support-logos/p4f.jpg",
+            "value": "data/resources/support-logos/p4f.jpg",
+            "label": "Parents For Future"
+          },
+          {
+            "render": "data/resources/support-logos/attac.png",
+            "value": "data/resources/support-logos/attac.png",
+            "label": "Attac"
+          },
+          {
+            "render": "data/resources/support-logos/nabu.png",
+            "value": "data/resources/support-logos/nabu.png",
+            "label": "NaBu"
+          },
+          {
+            "render": "data/resources/support-logos/y4c.png",
+            "value": "data/resources/support-logos/y4c.png",
+            "label": "Youth For Climate"
+          },
+          {
+            "render": "data/resources/support-logos/verdi.png",
+            "value": "data/resources/support-logos/verdi.png",
+            "label": "Ver.di"
+          },
+          {
+            "render": "data/resources/support-logos/fff.jpg",
+            "value": "data/resources/support-logos/fff.jpg",
+            "label": "Fridays For Future"
+          },
+          {
+            "render": "data/resources/support-logos/bund.png",
+            "value": "data/resources/support-logos/bund.png",
+            "label": "BUND"
+          },
+          {
+            "render": "data/resources/support-logos/psycholgists4future.png",
+            "value": "data/resources/support-logos/psycholgists4future.png",
+            "label": "Psychologists For Future"
+          },
+          {
+            "render": "data/resources/support-logos/klimastreik.png",
+            "value": "data/resources/support-logos/klimastreik.png",
+            "label": "Klimastreik"
+          },
+          {
+            "render": "data/resources/support-logos/s4f.png",
+            "value": "data/resources/support-logos/s4f.png",
+            "label": "Scientists For Future"
+          },
+          {
+            "render": "data/resources/support-logos/greenpeace.png",
+            "value": "data/resources/support-logos/greenpeace.png",
+            "label": "Greenpeace"
+          },
+          {
+            "render": "data/resources/support-logos/architects4future.png",
+            "value": "data/resources/support-logos/architects4future.png",
+            "label": "Architects For Future"
+          },
+          {
+            "render": "data/resources/support-logos/artists4future.png",
+            "value": "data/resources/support-logos/artists4future.png",
+            "label": "Artists For Future"
+          },
+          {
+            "render": "data/resources/support-logos/d4f.png",
+            "value": "data/resources/support-logos/d4f.png",
+            "label": "Developers For Future"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Title",
+      "key": "title",
+      "default": "#AlleFürsKlima",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Date & Time",
+      "key": "date",
+      "default": "20.09.19 | 12 Uhr",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Location",
+      "key": "location",
+      "default": "Berlin, Brandenburger Tor",
+      "properties": {
+
+      }
+    }
+  ]
+}

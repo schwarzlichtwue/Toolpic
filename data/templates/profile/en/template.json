@@ -1,0 +1,92 @@
+{
+  "name": "Profile Picture",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/profile/fr/template.json",
+  "preview": "data/templates/profile/fr/preview.png",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/profile/fr/document.svg",
+      "alias": "1:1"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost-600",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-700",
+      "src": "fonts/Jost/Jost-700-Bold.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-400",
+      "src": "fonts/Jost/Jost-400-Book.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Selection",
+      "description": "Background",
+      "key": "pic",
+      "default": {
+        "data": "data/templates/profile/en/bg.jpg"
+      },
+      "properties": {
+        "items": [
+          {
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Hashtag",
+      "key": "hashtag",
+      "default": "#HowDareYou",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Langugage",
+      "key": "lang",
+      "default": "fr",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Date",
+      "key": "date",
+      "default": "NOVEMBER 29",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "First Red",
+      "key": "first",
+      "default": "CLIMATE",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Second Red",
+      "key": "second",
+      "default": "STRIKE",
+      "properties": {
+
+      }
+    }
+  ]
+}

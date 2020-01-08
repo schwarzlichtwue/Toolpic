@@ -1,0 +1,33 @@
+input {
+  font-size: 1em;
+  padding: 5px 8px;
+  outline: none;
+  border: 1px solid #d9d9d9;
+}
+input:focus {
+  border-color: #29a4ba;
+}
+input[type="range"] {
+  appearance: none;
+  -webkit-appearance: none;
+  height: 3px;
+  width: 100%;
+  max-width: 200px;
+  background-color: #1DA64A;
+  border-radius: 3px;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #1B7340;
+}
+input[type="range"] {
+
+}

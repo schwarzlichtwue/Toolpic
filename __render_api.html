@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1,user-scalable=0">
+    <title>Toolpic</title>
+
+    <style media="screen">
+      .render {
+        width: 100vw;
+        height: 100vh;
+        background-color: transparent;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+
+    <script type="text/javascript">
+
+
+
+      var render;
+
+
+      function start(template, docIndex, data, renderings = 1) {
+        return new Promise(async function(resolve, reject) {
+          const renderView = document.querySelector(".render");
+
+          const Toolpic = await import("./dist/main.js");
+
+          render = new Toolpic.Renderer(template, docIndex);
+
+          render.once("load", async function() {
+            renderView.append(render.context);
+
+            for (var i = 0; i < renderings; i++) {
+              await new Promise(function(resolveTimeout, rejectTimeout) {
+
+                update(data);
+
+                setTimeout(function() {
+                  resolveTimeout(true);
+                }, 250);
+              });
+
+            }
+
+
+
+            setTimeout(function() {
+              resolve(true);
+            }, 0);
+
+          });
+        });
+      }
+
+      function update(data) {
+        for (let keyName in data) {
+          try {
+            render.data[keyName] = data[keyName];
+          }
+          catch (e) {}
+
+        }
+      }
+    </script>
+
+
+
+  </head>
+
+  <body>
+    <div class="render">
+
+    </div>
+  </body>
+</html>

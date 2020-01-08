@@ -1,0 +1,83 @@
+{
+  "name": "Flyer 29.11",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/flyer2911/template.json",
+  "preview": "data/templates/flyer2911/preview.jpg",
+  "type": "jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/flyer2911/1200x1200.svg",
+      "alias": "SharePic"
+    },
+    {
+      "width": 1748,
+      "height": 2480,
+      "src": "data/templates/flyer2911/Front.svg",
+      "alias": "Flyer Front, A5"
+    },
+    {
+      "width": 1748,
+      "height": 2480,
+      "src": "data/templates/flyer2911/Back.svg",
+      "alias": "Flyer Back, A5"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost-Light",
+      "src": "fonts/Jost/Jost-300-Light.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-Medium",
+      "src": "fonts/Jost/Jost-500-Medium.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-Bold",
+      "src": "fonts/Jost/Jost-700-Bold.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-Heavy",
+      "src": "fonts/Jost/Jost-800-Heavy.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-Black",
+      "src": "fonts/Jost/Jost-900-Black.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Line",
+      "description": "Time",
+      "key": "time",
+      "default": "12 UHR",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Location",
+      "key": "location",
+      "default": "Mainz, Hauptbahnhof",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "OG Title",
+      "key": "title",
+      "default": "",
+      "properties": {
+
+      }
+
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "S4F Logo",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/s4f-logo/template.json",
+  "preview": "data/templates/s4f-logo/preview.svg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/s4f-logo/document.svg",
+      "alias": "1:1"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Montserrat",
+      "src": "fonts/Montserrat/Montserrat-Bold.otf",
+      "mime": "font/opentype"
+    }
+  ],
+  "fields": [
+
+    {
+      "type": "Line",
+      "description": "Title",
+      "key": "title",
+      "default": "Osnabrück",
+      "properties": {
+
+      }
+
+    }
+  ]
+}

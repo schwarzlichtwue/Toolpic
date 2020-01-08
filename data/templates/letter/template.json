@@ -1,0 +1,80 @@
+{
+  "name": "Letter",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/letter/template.json",
+  "preview": "data/templates/letter/preview.jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/letter/1200x1200.svg",
+      "alias": "Facebook, Instagram"
+    },
+    {
+      "width": 1200,
+      "height": 675,
+      "src": "data/templates/letter/1200x675.svg",
+      "alias": "Twitter"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost-500",
+      "src": "fonts/Jost/Jost-500-Medium.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-300",
+      "src": "fonts/Jost/Jost-400-Book.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Line",
+      "description": "Subtitle",
+      "key": "subtitle",
+      "default": "Hey Politiker,",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Text",
+      "description": "Text",
+      "key": "text",
+      "default": ["MACHT GEFÄLLIGST EURE HAUSAUFGABEN!"],
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Text",
+      "description": "Description",
+      "key": "description",
+      "default": ["28.06 12:00 Uhr", "INVALIDENPARK"],
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Selection",
+      "description": "Logo",
+      "key": "logo",
+      "default": "data/resources/logo-2.svg",
+      "properties": {
+        "mime": "image/png",
+        "width": 200,
+        "height": 200,
+        "items": [
+          {
+            "type": "value",
+            "value": "data/resources/logo-2.svg"
+          },
+          {
+            "type": "file"
+          }
+        ]
+      }
+    }
+  ]
+}

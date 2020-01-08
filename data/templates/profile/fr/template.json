@@ -1,0 +1,87 @@
+{
+  "name": "Profile Picture",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/profile/template.json",
+  "preview": "data/templates/profile/fr/preview.jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/profile/fr/Logo_YFC_France.svg",
+      "alias": "1:1"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Gotham-Ultra",
+      "src": "fonts/Gotham/Gotham Ultra.otf",
+      "mime": "font/opentype"
+    },
+    {
+      "name": "Gotham-Medium",
+      "src": "fonts/Gotham/Gotham Medium.otf",
+      "mime": "font/opentype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Selection",
+      "description": "Background",
+      "key": "pic",
+      "default": {
+        "data": "data/templates/profile/fr/bg.jpg"
+      },
+      "properties": {
+        "items": [
+          {
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Hashtag",
+      "key": "hashtag",
+      "default": "#HowDareYOU",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Langugage",
+      "key": "lang",
+      "default": "fr",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Date",
+      "key": "date",
+      "default": "29 NOVEMBRE",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "First Red",
+      "key": "first",
+      "default": "CLIMATIQUE",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Second Red",
+      "key": "second",
+      "default": "GRÈVE",
+      "properties": {
+
+      }
+    }
+  ]
+}

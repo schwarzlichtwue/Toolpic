@@ -1,0 +1,46 @@
+{
+  "name": "Profile Picture",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/profile/template.json",
+  "preview": "data/templates/profile/de/preview.jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/profile/de/document.svg",
+      "alias": "1:1"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost-600",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Selection",
+      "description": "Background",
+      "key": "pic",
+      "default": {
+        "data": "data/templates/profile/fr/bg.jpg"
+      },
+      "properties": {
+        "items": [
+          {
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Hashtag",
+      "key": "hashtag",
+      "default": "#AllForClimate",
+      "properties": {
+
+      }
+    }
+  ]
+}

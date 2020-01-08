@@ -1,0 +1,62 @@
+.selections {
+  width: 100%;
+
+}
+.selections > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: scroll;
+  height: 180px;
+}
+.selections > ul > li {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  padding: 3px 0;
+  cursor: pointer;
+}
+.selections > ul > li:hover {
+  background-color: rgb(244, 244, 244);
+}
+.selections > ul > li.selected {
+  opacity: 0.5;
+}
+.selections > ul > li.hidden {
+  display: none;
+}
+.selections > ul > li .icon {
+  height: 30px;
+  width: 30px;
+  flex: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.selections > ul > li .icon > img {
+  height: 100%;
+  width: auto;
+}
+.selections > ul > li .label {
+  flex: 1;
+  vertical-align: middle;
+}
+.selections > ul > li .label:before {
+  width: 0;
+  height: 100%;
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 0 0 5px;
+}
+.selections > ul > li > div {
+
+}
+
+
+
+.selections input[type='search'] {
+  outline: none;
+  width: 100%;
+  font-size: 1em;
+  padding: 5px 3px;
+}

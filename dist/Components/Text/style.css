@@ -1,0 +1,12 @@
+textarea {
+  font-size: 1em;
+  padding: 5px 8px;
+  outline: none;
+  border: 1px solid #d9d9d9;
+  height: 60px;
+  width: 100%;
+  max-width: 200px;
+}
+textarea:focus {
+  border-color: #29a4ba;
+}

@@ -1,0 +1,120 @@
+{
+  "name": "Date 1",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/date/template.json",
+  "preview": "data/templates/date/preview.jpg",
+  "documents": [
+    {
+      "width": 1200,
+      "height": 1200,
+      "src": "data/templates/date/1200x1200.svg",
+      "alias": "Facebook, Instagram"
+    },
+    {
+      "width": 1200,
+      "height": 675,
+      "src": "data/templates/date/1200x675.svg",
+      "alias": "Twitter"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Selection",
+      "description": "Background",
+      "key": "backgroundImage",
+      "default": {
+        "data": "data/templates/date/default.jpg"
+      },
+      "properties": {
+        "items": [
+          {
+            "type": "file"
+          }
+        ]
+      }
+    },
+    {
+      "type": "Number",
+      "description": "Position",
+      "key": "pos",
+      "default": 0,
+      "properties": {
+        "value": 0,
+        "max": 1,
+        "min": -1,
+        "step": 0.05,
+        "kind": "slider"
+      }
+    },
+    {
+      "type": "Number",
+      "description": "Opacity",
+      "key": "opacity",
+      "default": 0.85,
+      "properties": {
+        "value": 0.85,
+        "max": 1,
+        "min": 0,
+        "kind": "slider",
+        "step": 0.01
+      }
+    },
+    {
+      "type": "Text",
+      "description": "Title",
+      "key": "title",
+      "default": ["ACT", "NOW!"],
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Date",
+      "key": "date",
+      "default": "15. März",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Location & Time",
+      "key": "location",
+      "default": "10 Uhr | Mainz Hbf",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Selection",
+      "description": "Logo",
+      "key": "logo",
+      "default": "data/resources/logo-2.svg",
+      "properties": {
+        "mime": "image/png",
+        "width": 200,
+        "height": 200,
+        "items": [
+          {
+            "type": "value",
+            "value": "data/resources/logo-2.svg"
+          },
+          {
+            "type": "value",
+            "value": "data/resources/logo.svg"
+          },
+          {
+            "type": "file"
+          }
+        ]
+      }
+    }
+  ]
+}
