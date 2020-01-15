@@ -14,7 +14,7 @@ const app = new Vue({
   data: {
     menuOpen: true,
     templateUrls: [
-      //'data/templates/profile/dieuhrtickt/template.json',
+      'data/templates/profile/hamburg2020/template.json',
       'data/templates/date-2/template.json',
       'data/templates/map/template.json',
       'data/templates/date/template.json',
@@ -102,9 +102,11 @@ const app = new Vue({
       }));
       docSelector.value = 0;
 
-      docSelector.onchange = function() {
-        const index = Number(this.value);
-        console.log(index);
+      const self = this;
+
+      docSelector.onchange = () => {
+        const index = Number(docSelector.value);
+        console.log(index, self);
 
         self.__render = loadTemplate(self.__activeTemplate, index);
 
