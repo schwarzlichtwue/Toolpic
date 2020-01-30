@@ -18,6 +18,8 @@ export default class Component extends EventEmitter {
       mode: 'open'
     });
 
+    this.__shadow = shadow;
+
     this[symbols.keyName] = keyName;
     this[symbols.rendererInstance] = rendererInstance;
 

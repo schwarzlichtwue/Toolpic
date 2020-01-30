@@ -27,15 +27,36 @@ export function Uint8ToBase64(u8Arr){
 }
 
 export function blobToDataURL(blob) {
-    return new Promise(function(resolve, reject) {
-      var a = new FileReader();
-      a.onload = function(e) {
-        resolve(e.target.result);
-      }
-      a.readAsDataURL(blob);
-    });
-  }
+  return new Promise(function(resolve, reject) {
+    var a = new FileReader();
+    a.onload = function(e) {
+      resolve(e.target.result);
+    }
+    a.readAsDataURL(blob);
+  });
+}
 
+export function emptyElement(e) {
+  while (e.children.length > 0) {
+    e.removeChild(e.children[0]);
+  }
+}
+
+
+export async function sha256(message) {
+    // encode as UTF-8
+    const msgBuffer = new TextEncoder('utf-8').encode(message);
+
+    // hash the message
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+
+    // convert ArrayBuffer to Array
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+
+    // convert bytes to hex string
+    const hashHex = hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
+    return hashHex;
+}
 
 export function wordWrap(str, maxWidth) {
   function testWhite(x) {

@@ -2,8 +2,6 @@ import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.esm.browser.js
 import AsyncComputed from './vue-async-computed.esm.js'
 import * as Toolpic from "../dist/main.js"
 
-console.log(Toolpic);
-
 import { responseToDataUrl, iOS, openTab } from './helper.js'
 import download from './download.js'
 
@@ -55,7 +53,7 @@ const app = new Vue({
   },
   mounted() {
     const loadChecker = setInterval(function() {
-      console.log("!!!");
+      //console.log("!!!");
       if (app.templates) {
         clearInterval(loadChecker);
 
@@ -93,7 +91,6 @@ const app = new Vue({
       const docSelector = document.querySelector(".select-doc");
       docSelector.clear();
       docSelector.append(...template.documents.map((doc, i) => {
-        console.log(doc);
         const opt = Object.assign(document.createElement("option"), {
           value: i
         });

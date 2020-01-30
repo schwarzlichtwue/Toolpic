@@ -61,6 +61,27 @@
       }
     },
     {
+      "type": "StockFootage",
+      "description": "Background",
+      "key": "image",
+      "default": {
+        "data": "data/templates/date-2/bg.jpg"
+      },
+      "properties": {
+        "databases": [
+          {
+            "type": "ResourceSpace",
+            "label": "FFF Original",
+            "host": "bilder.fffutu.re"
+          },
+          {
+            "type": "Pexels",
+            "label": "Pexels"
+          }
+        ]
+      }
+    },
+    {
       "type": "Number",
       "description": "Position",
       "key": "pos",

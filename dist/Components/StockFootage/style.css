@@ -1,0 +1,13 @@
+.stock-result {
+  margin: 3px;
+  padding: 8px;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #252525;
+  border: 1px solid #141414;
+}
+.stock-result img {
+  width: 60px;
+  height: 60px;
+}

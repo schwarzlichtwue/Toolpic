@@ -775,7 +775,7 @@ function(e) {
 
 
 export default function imageInfo(url, mime) {
-  console.log(mime);
+  //console.log(mime);
 
   return new Promise(function(resolve, reject) {
 

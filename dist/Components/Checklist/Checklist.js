@@ -13,7 +13,6 @@ class ChecklistComponent extends SuperComponent {
 
     const defaultVal = self.value.value;
 
-    console.log(props);
     const checkFragments = props.fields.map((fieldLabel, index) => {
       const span = Object.assign(document.createElement("span"), {
         className: 'checkbox-label'

@@ -6,6 +6,9 @@ import FittingMap from './FittingMap/FittingMap.js'
 import Number from './Number/Number.js'
 import Checklist from './Checklist/Checklist.js'
 import Multiselection from './Multiselection/Multiselection.js'
+import StockFootage from './StockFootage/StockFootage.js'
+
+import { createElement } from '../helpers.js'
 
 const ComponentsObj = {
   Line,
@@ -15,7 +18,8 @@ const ComponentsObj = {
   FittingMap,
   Number,
   Checklist,
-  Multiselection
+  Multiselection,
+  StockFootage
 }
 
 // Create a list of components by a given rendering instance and configure them ready to use
@@ -64,4 +68,67 @@ export function createArray(renderInstance, description = false) {
   }).filter(entry => entry);
 }
 
-export { Line, Text, Selection, Map, FittingMap, Number, Checklist, Multiselection }
+export function popup(styleSheet) {
+
+  const popupView = createElement("div", {
+    className: "popup-view"
+  });
+
+  const popupWin = createElement("div", {
+    className: "component-popup",
+    childs: [
+      createElement("div", {
+        className: "popup-menu",
+        childs: [
+          createElement("div", {
+            className: "btn-close",
+            childs: [
+              createElement("img", {
+                attributes: {
+                  src: 'data/resources/close.svg'
+                }
+              })
+            ],
+            eventListeners: [
+              {
+                type: "click",
+                callback() {
+                  const animationDuration = parseFloat(window.getComputedStyle(popupWin)["animation-duration"].replace(/[^0-9\.]/g, ""));
+
+                  document.body.removeChild(popupWin);
+
+                  /*
+                  popupWin.style["animation-direction"] = "reverse";
+                  popupWin.style["animation-name"] = "";
+                  popupWin.style["animation-name"] = "hidePopup";
+
+                  setTimeout(function() {
+                    document.body.removeChild(popupWin);
+                  }, animationDuration * 1000)*/
+                }
+              }
+            ]
+          })
+        ]
+      }),
+      popupView
+    ]
+  });
+
+  const shadow = popupView.attachShadow({
+    mode: 'open'
+  });
+  const styleElement = document.createElement("style");
+  shadow.append(styleElement);
+
+  fetch(styleSheet).then(async function(response) {
+    styleElement.innerHTML = await response.text();
+  });
+
+  document.body.append(popupWin);
+
+  return shadow;
+
+}
+
+export { Line, Text, Selection, Map, FittingMap, Number, Checklist, Multiselection, StockFootage }
