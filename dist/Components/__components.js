@@ -118,6 +118,8 @@ export function popup(styleSheet) {
   const shadow = popupView.attachShadow({
     mode: 'open'
   });
+  shadow.win = popupWin;
+
   const styleElement = document.createElement("style");
   shadow.append(styleElement);
 

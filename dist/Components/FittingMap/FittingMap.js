@@ -153,6 +153,8 @@ class FittingMapComponent extends SuperComponent {
                   return result.json();
                 });
 
+                console.log(geocodingResultsPromises);
+
                 const geocodingResults = await Promise.all(geocodingResultsPromises);
 
                 const feautures = geocodingResults.map(function(result) {
@@ -208,7 +210,7 @@ class FittingMapComponent extends SuperComponent {
     });
 
 
-    setTimeout(function() {
+    setTimeout(() => {
 
       map = new mapboxgl.Map({
         container: mapContainer,
@@ -228,8 +230,8 @@ class FittingMapComponent extends SuperComponent {
 
 
 
-      map.on("load", function() {
-
+      map.on("load", () => {
+        this.root.querySelector(".btn-refresh").click();
 
       });
     }, 100);

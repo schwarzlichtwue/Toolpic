@@ -1,0 +1,32 @@
+{
+  "name": "Hamburg Plakat",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/plakat2102/template.json",
+  "preview": "data/templates/plakat2102/preview.jpg",
+  "type": "jpg",
+  "documents": [
+    {
+      "width": 3508,
+      "height": 4961,
+      "src": "data/templates/plakat2102/Plakat.svg",
+      "alias": "Plakat DIN"
+    }
+  ],
+  "fonts": [
+    {
+      "name": "Jost-Semi",
+      "src": "fonts/Jost/Jost-600-Semi.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+    {
+      "type": "Line",
+      "description": "Mobi Spruch für deine Stadt",
+      "key": "cityMobiText",
+      "default": "Kiel, Hamburg braucht dich!",
+      "properties": {
+
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import ResourceSpace from './ResourceSpace.js'
 
 import { popup } from '../__components.js'
 
-import { createElement, sha256, emptyElement } from '../../helpers.js'
+import { createElement, sha256, emptyElement, openFile } from '../../helpers.js'
 
 const styleSource = 'dist/Components/StockFootage/style.css';
 
@@ -23,25 +23,58 @@ class StockFootage extends SuperComponent {
 
 
     const stockResultView = createElement("div", {
-      className: "stock-result",
+      className: "interactives",
       childs: [
-        createElement("img", {
-          attributes: {
-            src: component.value.data
-          }
-        })
-      ],
-      eventListeners: [
-        {
-          type: "click",
-          callback() {
-            popupShadow = popup("dist/Components/StockFootage/popup.css");
+        createElement("div", {
+          className: "item stock-result",
+          childs: [
+            createElement("img", {
+              attributes: {
+                src: component.value
+              }
+            })
+          ],
+          eventListeners: [
+            {
+              type: "click",
+              callback() {
+                popupShadow = popup("dist/Components/StockFootage/popup.css");
 
-            popupShadow.append(stockMain);
-          }
-        }
+                popupShadow.append(stockMain);
+
+                popupShadow.close = function() {
+                  document.body.removeChild(popupShadow.win);
+                }
+              }
+            }
+          ]
+        }),
+        createElement("div", {
+          className: "item",
+          childs: [
+            createElement("img", {
+              attributes: {
+                src: 'data/resources/icons/cloud-backup-up-arrow.svg'
+              }
+            })
+          ],
+          eventListeners: [
+            {
+              type: "click",
+              async callback() {
+                const file = await openFile({
+                  width: component.properties.width || 1200,
+                  height: component.properties.height || 1200,
+                  mime: component.properties.mime || 'image/jpeg'
+                });
+
+                self.value = file.data;
+              }
+            }
+          ]
+        })
       ]
-    })
+    });
 
     //const popupShadow = popup();
 
@@ -162,6 +195,8 @@ class StockFootage extends SuperComponent {
 
       emptyElement(list);
 
+      clearInterval(ticker);
+
       spinner.style.display = "block";
 
       const database = (() => {
@@ -173,7 +208,7 @@ class StockFootage extends SuperComponent {
       })();
 
       if (database.type in databaseHandlers) {
-        databaseHandlers[database.type](database, value, list).then(function() {
+        databaseHandlers[database.type](database, value, list, popupShadow, self, component).then(function() {
           spinner.style.display = "none";
         });
       }
@@ -193,7 +228,8 @@ class StockFootage extends SuperComponent {
 }
 
 const databaseHandlers = {
-  async ResourceSpace(databaseDescriptor, searchQuery, list) {
+  async ResourceSpace(databaseDescriptor, searchQuery, list, popupShadow, componentInstance, component) {
+
 
     console.log(list);
 
@@ -210,8 +246,11 @@ const databaseHandlers = {
 
     const jsonResult = await response.json();
 
-    list.result = jsonResult;
+    const baseLis = jsonResult.filter(item => item).filter(item => {
+      return "url_col" in item;
+    });
 
+    console.log(baseLis);
 
 
     /**/
@@ -220,10 +259,9 @@ const databaseHandlers = {
       const start = list.children.length;
       console.log(start);
 
-      const lis = listArray.slice(start, start + count).filter(item => {
 
-        return "url_col" in item;
-      }).map(function(item) {
+
+      const lis = listArray.slice(start, start + count).map(function(item) {
         return createElement("li", {
           className: "item",
           childs: [
@@ -245,13 +283,20 @@ const databaseHandlers = {
               async callback() {
                 //get_resource_field_data
 
-                const response = await fetch("php/resourcespace/get_resource_path.php?id=" + item.ref);
+                console.log(item);
 
-                const jsonResult = await response.json();
+                const previewUrl = item["url_scr"];
+                const miniUrl = item["url_thm"];
 
-                const url = "https://" + databaseDescriptor.host + jsonResult;
+                popupShadow.close();
 
-                console.log(url);
+
+                componentInstance.value = previewUrl;
+
+                const previewImg = componentInstance.root.querySelector(".stock-result img");
+                previewImg.src = miniUrl;
+
+
               }
             }
           ]
@@ -261,20 +306,123 @@ const databaseHandlers = {
       list.append(...lis);
     }
 
-    const lis = drawPreviews(list.result, list, 50);
+    const lis = drawPreviews(baseLis, list, 500);
 
-    setInterval(function() {
-      drawPreviews(list.result, list, 50);
-      if (list.children.length >= list.result.length) {
-        clearInterval(this);
+    /*ticker = setInterval(function() {
+      drawPreviews(baseLis, list, 50);
+      console.log(list.children.length, baseLis.length);
+      if (list.children.length >= baseLis.length) {
+        console.log("!");
+        clearInterval(ticker);
       }
-    }, 1000);
+    }, 1000);*/
 
 
+
+
+
+  },
+  async Pexels(databaseDescriptor, searchQuery, list, popupShadow, componentInstance, component) {
+
+    const apiKey = "563492ad6f91700001000001fd927492d5bb4d918cebd637b3838073";
+
+    const perPage = 80;
+    const maxRequest = 500;
+    const requestsAmount = new Array(Math.ceil(maxRequest / perPage)).fill(true).map((value, index) => {
+      return index < Math.trunc(maxRequest / perPage) ? perPage : (maxRequest % perPage);
+    });
+
+    for (let i = 0; i < requestsAmount.length; i++) {
+      const count = requestsAmount[i];
+      await request(count, i);
+    }
+
+
+    async function request(count, index) {
+      const url = 'https://api.pexels.com/v1/search?query=' + searchQuery.replace(/\s/g, "+") + '&per_page=' + count + '&page=' + (index + 1);
+
+      const response = await fetch(url, {
+        headers: {
+          'Authorization': apiKey
+        }
+      });
+      const result = await response.json();
+      console.log(result);
+      drawPreviews(result.photos, list);
+    }
+
+
+    function drawPreviews(listArray, list) {
+
+      const lis = listArray.map(function(item) {
+        return createElement("li", {
+          className: "item",
+          childs: [
+            createElement("div", {
+              className: "preview-image",
+              attributes: {
+                style: `
+                  background-image: url('${ item.src.small }');
+                `
+              }
+            }),
+            createElement("div", {
+              className: "label"
+            }, item.field8)
+          ],
+          eventListeners: [
+            {
+              type: "click",
+              async callback() {
+                //get_resource_field_data
+
+                console.log(item);
+
+                const baseUrl = item.src.original;
+
+                const minSize = {
+                  w: component.properties.width,
+                  h: component.properties.height
+                };
+                const aimRatio = minSize.h / minSize.w;
+                const imgRatio = item.height / item.width;
+
+                /*var minSide;
+
+                if (imgRatio <= aimRatio) {
+                  minSide = "height";
+                }
+                else {
+                  minSide = "width";
+                }*/
+
+                const minSideName = ["w", "h"][Number(imgRatio <= aimRatio)];
+
+                const specificUrl = item.src.original + "?auto=compress&cs=tinysrgb&" + minSideName + "=" + minSize[minSideName];
+
+                const thumbUrl = item.src.original + "?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=120&w=120";
+
+                popupShadow.close();
+
+                componentInstance.value = specificUrl;
+
+                const previewImg = componentInstance.root.querySelector(".stock-result img");
+                previewImg.src = thumbUrl;
+
+
+              }
+            }
+          ]
+        })
+      });
+
+      list.append(...lis);
+    }
 
 
 
   }
 };
+var ticker;
 
 export default StockFootage;

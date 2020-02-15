@@ -15,12 +15,14 @@
       </text>
     </g>
 
+
+
     <g style="transform-origin: 600px 550px; transform: rotate(-4deg);">
-      <multiline-text v-dynamic data-dynamic-origin="none" data-dynamic-width="1120" data-dynamic-height="600" style="transform-origin: 40px 550px;" x="40" y="550" padding="25 35" v-bind:text="textToMultilineFormat(text.join(' '), 0.55, 0.4, true)" lineheight="1.2" background="#fff" verticalalign="center" css="font-size: 150px; font-family: 'Jost-500'; fill: #FE0000;"></multiline-text>
+      <multiline-text v-dynamic data-dynamic-origin="none" data-dynamic-width="1120" data-dynamic-height="600" style="transform-origin: 40px 550px;" x="40" y="550" relative="0 0.5" padding="25 35" v-bind:text="textToMultilineFormat(text.join(' '), 0.55, 0.4, true)" lineheight="1.2" background="#fff" css="font-size: 150px; font-family: 'Jost-500'; fill: #FE0000;"></multiline-text>
     </g>
 
     <g>
-      <multiline-text v-dynamic data-dynamic-origin="none" data-dynamic-width="750" data-dynamic-height="250" style="transform-origin: 30px 1170px;" x="30" y="-5" padding="0" v-bind:text="description" lineheight="1.1" background="none" css="font-size: 80px; font-family: 'Jost-300'; fill: #fff;"></multiline-text>
+      <multiline-text v-dynamic data-dynamic-origin="none" data-dynamic-width="750" data-dynamic-height="250" style="transform-origin: 30px 1170px;" x="30" y="1195" relative="0 1" padding="0" v-bind:text="description" lineheight="1.1" background="none" css="font-size: 80px; font-family: 'Jost-300'; fill: #fff;"></multiline-text>
     </g>
 
     <image v-bind:xlink:href="typeof logo == 'object' ? logo.data : logo" x="866" y="866" height="500" width="500" />

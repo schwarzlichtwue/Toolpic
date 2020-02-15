@@ -124,8 +124,8 @@
         <g v-if="lng(route.data.target[0], route.meta, 1200) <= (1200 / 2)">
 
           <g v-pos data-rel="0 0.5" v-bind:data-pos="(lng(route.data.target[0], route.meta, 1200)) + ' ' + lat(route.data.target[1], route.meta, 1200)" filter="url(#dropshadow)">
-            <path style="fill: #13502D;" d="M 150,70 l -250,130 250,130"/>
-            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="typeof targetlogo == 'object' ? targetlogo.data : targetlogo"/>
+            <path style="fill: #a8360c;" d="M 150,70 l -250,130 250,130"/>
+            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="logo.data" />
           </g>
 
         </g>
@@ -133,8 +133,8 @@
         <g v-else>
 
           <g v-pos data-rel="1 0.5" v-bind:data-pos="(lng(route.data.target[0], route.meta, 1200)) + ' ' + lat(route.data.target[1], route.meta, 1200)" filter="url(#dropshadow)">
-            <path style="fill: #13502D;" d="M 250,70 l 250,130 -250,130"/>
-            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="typeof targetlogo == 'object' ? targetlogo.data : targetlogo"/>
+            <path style="fill: #a8360c;" d="M 250,70 l 250,130 -250,130"/>
+            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="logo.data"/>
           </g>
 
         </g>
@@ -177,8 +177,8 @@
         <g v-if="lat(route.data.target[1], route.meta, 1200) <= (1200 / 2)">
 
           <g v-pos data-rel="0.5 0" v-bind:data-pos="(lng(route.data.target[0], route.meta, 1200)) + ' ' + lat(route.data.target[1], route.meta, 1200)" filter="url(#dropshadow)">
-            <path style="fill: #13502D;" d="M 70,150 l 130,-250 130,250"/>
-            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="typeof targetlogo == 'object' ? targetlogo.data : targetlogo"/>
+            <path style="fill: #a8360c;" d="M 70,150 l 130,-250 130,250"/>
+            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="logo.data"/>
           </g>
 
         </g>
@@ -186,8 +186,8 @@
         <g v-else>
 
           <g v-pos data-rel="0.5 1" v-bind:data-pos="(lng(route.data.target[0], route.meta, 1200)) + ' ' + lat(route.data.target[1], route.meta, 1200)" filter="url(#dropshadow)">
-            <path style="fill: #13502D;" d="M 70,250 l 130,250 130,-250"/>
-            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="typeof targetlogo == 'object' ? targetlogo.data : targetlogo"/>
+            <path style="fill: #a8360c;" d="M 70,250 l 130,250 130,-250"/>
+            <image x="0" y="0" width="401" height="401" v-bind:xlink:href="logo.data"/>
           </g>
 
         </g>

@@ -46,28 +46,14 @@
   ],
   "fields": [
     {
-      "type": "Selection",
-      "description": "Background",
-      "key": "backgroundImage",
-      "default": {
-        "data": "data/templates/date-2/bg.jpg"
-      },
-      "properties": {
-        "items": [
-          {
-            "type": "file"
-          }
-        ]
-      }
-    },
-    {
       "type": "StockFootage",
       "description": "Background",
       "key": "image",
-      "default": {
-        "data": "data/templates/date-2/bg.jpg"
-      },
+      "default": "data/templates/date-2/bg.jpg",
       "properties": {
+        "width": 1200,
+        "height": 1200,
+        "mime": "image/jepg",
         "databases": [
           {
             "type": "ResourceSpace",

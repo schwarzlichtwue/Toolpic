@@ -12,7 +12,9 @@ const app = new Vue({
   data: {
     menuOpen: true,
     templateUrls: [
-      'data/templates/profile/hamburg2020/template.json',
+      'data/templates/plakat2102/template.json',
+      'data/templates/map1701/template.json',
+      //'data/templates/profile/bielefeld1302/template.json',
       'data/templates/date-2/template.json',
       'data/templates/map/template.json',
       'data/templates/date/template.json',
@@ -29,8 +31,7 @@ const app = new Vue({
       'data/templates/sentence/template.json',
       //'data/templates/support/template.json',
       //'data/templates/flyer2911/template.json',
-      'data/templates/thanks/template.json',
-      'data/templates/map1701/template.json'
+      'data/templates/thanks/template.json'
     ],
     __docIndex: 0,
     __activeTemplate: null,
@@ -254,7 +255,7 @@ const app = new Vue({
 });
 
 
-
+window.myRender;
 
 
 async function loadTemplate(template, docIndex = 0) {
@@ -268,6 +269,8 @@ async function loadTemplate(template, docIndex = 0) {
 
   // Initalize the rendering component
   const render = new Toolpic.Renderer(template, docIndex);
+
+  window.myRender = render;
 
   render.once("load", function() {
 

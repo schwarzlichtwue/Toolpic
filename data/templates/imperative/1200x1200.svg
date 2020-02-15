@@ -25,7 +25,7 @@
     <image v-bind:xlink:href="typeof backgroundImage == 'object' ? backgroundImage.data : backgroundImage" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
 
     <g style="transform-origin: 600px 290px; transform: rotate(-4deg);">
-      <multiline-text v-dynamic data-dynamic-origin="none" data-dynamic-width="1120" data-dynamic-height="500" style="transform-origin: 40px 50px;" x="40" y="50" padding="10 20" v-bind:text="text" lineheight="1.05" background="#1DA64A" css="font-size: 150px; font-family: 'Jost-600'; fill: #fff;"></multiline-text>
+      <multiline-text v-dynamic data-dynamic-origin="none" data-dynamic-width="1120" data-dynamic-height="500" style="transform-origin: 40px 50px;" x="40" y="50" relative="0 0" padding="10 20" v-bind:text="text" lineheight="1.05" background="#1DA64A" css="font-size: 150px; font-family: 'Jost-600'; fill: #fff;"></multiline-text>
     </g>
 
     <path style="fill: #1DA64A;" d="M 0,925 l 1200,175 L 1200,1200 0,1200" />
@@ -33,7 +33,7 @@
     <path style="fill: #1B7340;" d="M 0,910 l 1200,182.5 0,12.5 L 0,940" />
 
     <g>
-      <multiline-text v-dynamic data-dynamic-origin="none" data-dynamic-width="700" data-dynamic-height="190" style="transform-origin: 30px 1170px;" x="30" y="-5" padding="0" v-bind:text="description" lineheight="1.1" background="none" css="font-size: 80px; font-family: 'Jost-300'; fill: #fff;"></multiline-text>
+      <multiline-text v-dynamic data-dynamic-origin="none" data-dynamic-width="700" data-dynamic-height="190" style="transform-origin: 30px 1170px;" x="30" y="1195" relative="0 1" padding="0" v-bind:text="description" lineheight="1.1" background="none" css="font-size: 80px; font-family: 'Jost-300'; fill: #fff;"></multiline-text>
     </g>
 
     <image v-bind:xlink:href="typeof logo == 'object' ? logo.data : logo" x="1000" y="1000" height="300" width="300" filter="url(#dropshadow)" />

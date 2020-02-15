@@ -1,13 +1,29 @@
 import textInfo from '../vue-helpers/textInfo.js'
 
 const multiline = {
-  props: ['x', 'y', 'text', 'padding', 'lineheight', 'background', 'css', 'verticalalign', 'align'],
+  props: ['x', 'y', 'text', 'padding', 'lineheight', 'background', 'css', 'relative'],
   data: function() {
     return {
       a: 100
     };
   },
   computed: {
+    relativePos() {
+      try {
+        const [ x, y ] = this.relative.split(" ").map(Number);
+
+        return {
+          x,
+          y
+        };
+      }
+      catch (e) {
+        return {
+          x: 0,
+          y: 0
+        }
+      }
+    },
     pos() {
       return {
         x: Number(this.x),
@@ -68,9 +84,9 @@ const multiline = {
     },
     lines() {
 
+      const textArray = this.text.filter(line => line);
+
       const viewBox = this.$root.$el.closest("svg").getAttribute("viewBox").split(" ").map(numberStr => parseInt(numberStr));
-      const verticalAlign = this["verticalalign"];
-      const align = this["align"];
       const lineHeight = Number(this.lineheight || 1.1);
 
       const totalRectSize = {
@@ -78,12 +94,18 @@ const multiline = {
         height: this.offset[0] + (this.fontSize * 1) + this.offset[2]
       };
 
-      const totalHeight = (totalRectSize.height * lineHeight) * this.text.length;
+      const totalHeight = (totalRectSize.height * lineHeight) * textArray.length;
 
-      const x = align == "right" ? (viewBox[2] - Number(this.x) - totalRectSize.width) : Number(this.x);
-      const y = (viewBox[3] + Number(this.y)) % viewBox[3];
+      var x = Number(this.x);
+      var y = Number(this.y);
 
-      return this.text.map((line, index) => {
+      const maxHeight = (totalRectSize.height * lineHeight) * (textArray.length - 1) + totalRectSize.height;
+
+      x = x - totalRectSize.width * this.relativePos.x;
+      y = y - maxHeight * this.relativePos.y;
+
+
+      return textArray.map((line, index) => {
         const yPos = y + (totalRectSize.height * lineHeight) * index;
 
         const rectSize = {
@@ -91,10 +113,11 @@ const multiline = {
           height: totalRectSize.height
         }
 
+
         return {
           text: line,
           x: x,
-          y: verticalAlign == "center" ? (yPos - totalHeight / 2) : (Number(this.y) >= 0 ? yPos : (yPos - totalHeight)),
+          y: yPos,
           width: rectSize.width,
           height: rectSize.height
         };

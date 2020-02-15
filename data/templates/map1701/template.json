@@ -1,5 +1,5 @@
 {
-  "name": "Anreise 17.01",
+  "name": "Anreise Hamburg",
   "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/map1701/template.json",
   "preview": "data/templates/map1701/preview.jpg",
   "type": "jpg",
@@ -59,27 +59,27 @@
           }
         },
         "data": {
-          "start": [7.59778, 50.35972],
-          "target": [8.26667, 50]
+          "start": [8.664029, 50.107059],
+          "target": [10.005177, 53.552982]
         },
         "center": {
-          "lng": 7.932225000000017,
-          "lat": 50.180198591917616
+          "lng": 9.339860000000044,
+          "lat": 51.864605273131986
         },
-        "zoom": 8.175300022697638,
+        "zoom": 4.82943703029437,
         "width": 375,
         "height": 375,
         "accessToken": "pk.eyJ1IjoibWF1cmljZS1jb25yYWQiLCJhIjoiY2lpM25jbXVpMDExZXQ4bTBmYzd5cjBhbSJ9.zW17SmAFJRJPf8VjAxpang"
       },
       "properties": {
-        "fieldsDefaults": ["Koblenz", "Mainz"]
+        "fieldsDefaults": ["Frankfurt", "Hamburg"]
       }
     },
     {
       "type": "Line",
       "description": "Location",
       "key": "location",
-      "default": "Koblenz Hbf",
+      "default": "Frankfurt Hbf",
       "properties": {}
     },
     {
@@ -99,20 +99,16 @@
     {
       "type": "Selection",
       "description": "Logo",
-      "key": "targetlogo",
-      "default": "data/templates/map1701/Mainz.svg",
+      "key": "logo",
+      "default": "data/templates/map1701/Hamburg.png",
       "properties": {
         "mime": "image/png",
-        "width": 400,
-        "height": 400,
+        "width": 200,
+        "height": 200,
         "items": [
           {
             "type": "value",
-            "value": "data/templates/map1701/Mainz.svg"
-          },
-          {
-            "type": "value",
-            "value": "data/templates/map1701/Magdeburg.png"
+            "value": "data/templates/map1701/Hamburg.png"
           },
           {
             "type": "file"
