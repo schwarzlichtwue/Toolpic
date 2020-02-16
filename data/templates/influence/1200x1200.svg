@@ -10,8 +10,8 @@
 
 
 
-    <image v-if="typeof backgroundImage == 'object'" v-bind:xlink:href="backgroundImage.data" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
-    <rect x="0" y="0" width="100%" height="100%" v-bind:fill="backgroundImage" v-if="typeof backgroundImage != 'object'"/>
+    <image v-bind:xlink:href="image" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
+
 
     <g v-dynamic data-dynamic-width="1100" data-dynamic-height="600" style="transform-origin: 50% 50px;">
       <g v-for="line in title" v-bind:transform="'translate(' + (true ? (600 - (textInfo(line, { fontFamily: 'Jost', fontSize: '130px' }).width + 50) / 2) : 40) + ', ' + (title.indexOf(line) * 140) + ')'">

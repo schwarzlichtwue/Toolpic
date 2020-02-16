@@ -10,9 +10,9 @@
     <!--<image v-bind:xlink:href="backgroundImage.value" v-bind:x="(backgroundImage.info.ratio >= 1 ? -((backgroundImage.info.ratio - 1) * pos) : 0) + '%'" v-bind:y="(backgroundImage.info.ratio < 1 ? -(((1 / backgroundImage.info.ratio) - 1) * pos) : 0) + '%'" v-bind:height="(backgroundImage.info.ratio < 1 ? ((1 / backgroundImage.info.ratio) * 100) : 100) + '%'" v-bind:width="(backgroundImage.info.ratio >= 1 ? (backgroundImage.info.ratio * 100) : 100) + '%'" />
 -->
 
-    <image v-bind:xlink:href="backgroundImage.data" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
+    <image v-bind:xlink:href="image" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
 
-    <rect x="0" y="0" width="100%" height="100%" fill="#1B7340" v-bind:fill-opacity="opacity"/>
+    <rect x="0" y="0" width="100%" height="100%" fill="#1B7340" v-bind:fill-opacity="0"/>
 
     <g style="transform-origin: 50% 17.5px;" v-bind:style="{ 'transform': 'scale(' + Math.min(775 / (17.5 + 260 * title.length), (1200 - 100) / Math.max(...title.map(line => textInfo(line.toUpperCase(), { fontFamily: 'Jost', fontSize: '200px'}).width + 60))) + ')' }" v-bind:data-scale="500 / (17.5 + 260 * title.length)">
       <g v-for="line in title">

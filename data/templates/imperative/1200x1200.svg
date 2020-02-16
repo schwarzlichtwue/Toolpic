@@ -22,7 +22,7 @@
 
     <rect x="0" y="0" width="1200" height="1200" style="fill: #eeeeee;" />
 
-    <image v-bind:xlink:href="typeof backgroundImage == 'object' ? backgroundImage.data : backgroundImage" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
+    <image v-bind:xlink:href="image" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
 
     <g style="transform-origin: 600px 290px; transform: rotate(-4deg);">
       <multiline-text v-dynamic data-dynamic-origin="none" data-dynamic-width="1120" data-dynamic-height="500" style="transform-origin: 40px 50px;" x="40" y="50" relative="0 0" padding="10 20" v-bind:text="text" lineheight="1.05" background="#1DA64A" css="font-size: 150px; font-family: 'Jost-600'; fill: #fff;"></multiline-text>

@@ -7,7 +7,7 @@
 
 
   <g class="main">
-    <image v-bind:xlink:href="backgroundImage.data" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
+    <image v-bind:xlink:href="image" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
 
     <text x="100" y="60" style="fill: #fff; font-size: 60px; font-family: 'Jost', 'Helvetica Neue';">
       {{ subtitle }}

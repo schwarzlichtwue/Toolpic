@@ -10,7 +10,7 @@
 
 
 
-    <image v-if="typeof backgroundImage == 'object'" v-bind:xlink:href="backgroundImage.data" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" v-bind:filter="effects[0] ? 'url(#sw)' : 'none'" />
+    <image v-bind:xlink:href="image" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" v-bind:filter="effects[0] ? 'url(#sw)' : 'none'" />
 
 
     <multiline-text v-dynamic data-dynamic-origin="none" data-dynamic-width="1140" data-dynamic-height="500" style="transform-origin: 30px 20px;" x="30" y="20" padding="10 15" v-bind:text="textToMultilineFormat(text.join(' '), 0.4, 0.3, true)" lineheight="1.1" background="#1DA64A" verticalalign="" css="font-size: 52px; font-family: 'Jost-400'; fill: #fff;"></multiline-text>

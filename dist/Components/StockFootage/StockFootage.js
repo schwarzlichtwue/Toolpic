@@ -421,6 +421,71 @@ const databaseHandlers = {
 
 
 
+  },
+  async Pixabay(databaseDescriptor, searchQuery, list, popupShadow, componentInstance, component) {
+
+    const apiKey = "15279689-2d59e718147678953b72b30d3";
+
+    const perPage = 200;
+    const maxRequest = 500;
+    const requestsAmount = new Array(Math.ceil(maxRequest / perPage)).fill(true).map((value, index) => {
+      return index < Math.trunc(maxRequest / perPage) ? perPage : (maxRequest % perPage);
+    });
+
+    for (let i = 0; i < requestsAmount.length; i++) {
+      const count = requestsAmount[i];
+      await request(count, i);
+    }
+
+
+    async function request(count, index) {
+      const url = 'https://pixabay.com/api/?key=' + apiKey + '&q=' + searchQuery.replace(/\s/g, "+") + '&lang=de&image_type=photo&per_page=' + 200 + '&page=' + (index + 1);
+      const response = await fetch(url);
+      const result = await response.json();
+      drawPreviews(result.hits, list);
+    }
+
+
+    function drawPreviews(listArray, list) {
+
+
+      const lis = listArray.map(function(item) {
+        return createElement("li", {
+          className: "item",
+          childs: [
+            createElement("div", {
+              className: "preview-image",
+              attributes: {
+                style: `
+                  background-image: url('${ item.previewURL }');
+                `
+              }
+            }),
+            createElement("div", {
+              className: "label"
+            }, item.field8)
+          ],
+          eventListeners: [
+            {
+              type: "click",
+              async callback() {
+
+                popupShadow.close();
+
+                componentInstance.value = item.largeImageURL;
+
+                const previewImg = componentInstance.root.querySelector(".stock-result img");
+                previewImg.src = item.previewURL;
+
+
+              }
+            }
+          ]
+        })
+      });
+
+      list.append(...lis);
+    }
   }
 };
 var ticker;

@@ -31,16 +31,27 @@
   ],
   "fields": [
     {
-      "type": "Selection",
+      "type": "StockFootage",
       "description": "Background",
-      "key": "backgroundImage",
-      "default": {
-        "data": "data/templates/influence/bg.jpg"
-      },
+      "key": "image",
+      "default": "data/templates/influence/bg.jpg",
       "properties": {
-        "items": [
+        "width": 1080,
+        "height": 1080,
+        "mime": "image/jepg",
+        "databases": [
           {
-            "type": "file"
+            "type": "ResourceSpace",
+            "label": "FFF Original",
+            "host": "bilder.fffutu.re"
+          },
+          {
+            "type": "Pexels",
+            "label": "Pexels"
+          },
+          {
+            "type": "Pixabay",
+            "label": "Pixabay"
           }
         ]
       }

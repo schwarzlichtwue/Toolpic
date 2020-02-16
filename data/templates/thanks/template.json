@@ -5,8 +5,8 @@
   "type": "jpg",
   "documents": [
     {
-      "width": 1200,
-      "height": 1200,
+      "width": 1080,
+      "height": 1080,
       "src": "data/templates/thanks/1200x1200.svg",
       "alias": "Facebook, Instagram"
     }
@@ -30,16 +30,27 @@
   ],
   "fields": [
     {
-      "type": "Selection",
+      "type": "StockFootage",
       "description": "Background",
-      "key": "backgroundImage",
-      "default": {
-        "data": "data/templates/thanks/bg.jpg"
-      },
+      "key": "image",
+      "default": "data/templates/thanks/bg.jpg",
       "properties": {
-        "items": [
+        "width": 1080,
+        "height": 1080,
+        "mime": "image/jepg",
+        "databases": [
           {
-            "type": "file"
+            "type": "ResourceSpace",
+            "label": "FFF Original",
+            "host": "bilder.fffutu.re"
+          },
+          {
+            "type": "Pexels",
+            "label": "Pexels"
+          },
+          {
+            "type": "Pixabay",
+            "label": "Pixabay"
           }
         ]
       }
@@ -73,6 +84,15 @@
       "description": "Count",
       "key": "count",
       "default": "100 000",
+      "properties": {
+
+      }
+    },
+    {
+      "type": "Line",
+      "description": "Hashtag",
+      "key": "hashtag",
+      "default": "#NEUSTARTKLIMA",
       "properties": {
 
       }

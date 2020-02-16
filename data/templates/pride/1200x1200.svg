@@ -8,7 +8,7 @@
 
 
 
-    <image v-if="typeof backgroundImage == 'object'" v-bind:xlink:href="backgroundImage.data" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
+    <image v-bind:xlink:href="image" v-fitimage v-bind:data-image-pos="pos" style="transform-origin: 50% 50%;" />
     <rect x="0" y="0" width="100%" height="100%" style="fill: #000; opacity: 0.3;" v-if="effects[0]" />
 
 
