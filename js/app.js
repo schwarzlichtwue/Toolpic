@@ -12,8 +12,8 @@ const app = new Vue({
   data: {
     menuOpen: true,
     templateUrls: [
-      'data/templates/plakat2102/template.json',
-      'data/templates/map1701/template.json',
+      //'data/templates/plakat2102/template.json',
+      //'data/templates/map1701/template.json',
       //'data/templates/profile/bielefeld1302/template.json',
       'data/templates/date-2/template.json',
       'data/templates/map/template.json',
@@ -31,9 +31,12 @@ const app = new Vue({
       'data/templates/sentence/template.json',
       //'data/templates/support/template.json',
       //'data/templates/flyer2911/template.json',
-      'data/templates/thanks/template.json'
+      'data/templates/thanks/template.json',
+      'data/templates/video-test/template.json'
     ],
+    timestamp: 0,
     __docIndex: 0,
+    activeTemplate: null,
     __activeTemplate: null,
     popupOpen: false,
     __renderedBlob: null,
@@ -50,7 +53,12 @@ const app = new Vue({
     }
   },
   computed: {
-
+    format() {
+      return this.__activeTemplate ? (this.__activeTemplate.type ? this.__activeTemplate.type : "png") : null;
+    },
+    formatType() {
+      return this.format == "video" ? "video" : "image";
+    }
   },
   mounted() {
     const loadChecker = setInterval(function() {
@@ -63,10 +71,26 @@ const app = new Vue({
         if (loadTemplateId) {
           app.openTemplate(loadTemplateId - 1);
         }
+
+
       }
     }, 10);
   },
+  watch: {
+    timestamp(oldValue, newValue) {
+      window.myRender.seekAnimations(Number(newValue));
+    }
+  },
   methods: {
+    seek(event) {
+      const rangeSlider = event.target.closest("input[type='range']");
+      const value = Number(rangeSlider.value);
+
+      window.myRender.seekAnimations(value);
+    },
+    restartAnimations() {
+      window.myRender.restartAnimations();
+    },
     menuAction() {
       this.menuOpen = !this.menuOpen;
     },
@@ -85,6 +109,7 @@ const app = new Vue({
       const template = this.templates[templateIndex];
 
       this.__activeTemplate = template;
+      this.activeTemplate = this.__activeTemplate
 
       this.__render = loadTemplate(template, 0);
       this.__docIndex = 0;
@@ -147,9 +172,12 @@ const app = new Vue({
       const endpoint = 'https://api.fridaysforfuture.de/emulate';
       //const endpoint = 'http://localhost:443/emulate'
 
-      const format = this.__activeTemplate.type ? this.__activeTemplate.type : "png";
+      const format = (() => {
+        return this.__activeTemplate ? (this.__activeTemplate.type ? this.__activeTemplate.type : "png") : null;
+      })();
 
-      const response1 = fetch(endpoint + "/" + format, {
+
+      const response1 = await fetch(endpoint + "/" + format, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -163,65 +191,44 @@ const app = new Vue({
         })
       });
 
-      console.log(dataset);
+      const responseMime = response1.headers.get("Content-Type");
 
-      const blob = await (await response1).blob();
+      const blob = await response1.blob();
       const url = URL.createObjectURL(blob);
 
       this.__renderedBlob = blob;
       this.renderedImage = url;
+      this.mime = responseMime;
 
+      console.log(this.mime);
 
-        if (dataset.backgroundImage) {
-          console.log(dataset.backgroundImage.data.length);
-        }
-
-
-
-
-      const response2 = fetch(endpoint + '/svg', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          template: this.__activeTemplate,
-          doc: this.__docIndex,
-          data: dataset,
-          renderings: 1,
-          delay: 0
-        })
-      });
-
-      const blob2 = await (await response2).blob();
-      const url2 = URL.createObjectURL(blob);
-
-      this.__renderedBlobSVG = blob2;
-      this.__renderedSVG = url2;
-
-
-      /*const svgContext = svg.outerHTML;
-
-      const endpoint = 'https://api.fridaysforfuture.de:65324/render/png'
-      const response = fetch(endpoint, {
-        method: "POST",
-        headers: {
-          'Content-Type': 'image/svg+xml'
-        },
-        body: svgContext
-      });
-
-      this.popupOpen = true;
-      this.__renderedBlob = null;
-      this.renderedImage = null;
-
-      const blob = await (await response).blob();
-      const url = URL.createObjectURL(blob);*/
+      const formatType = (() => {
+        return format == "video" ? "video" : "image";
+      })();
 
 
 
+      if (formatType == "image") {
+        const response2 = fetch(endpoint + '/svg', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            template: this.__activeTemplate,
+            doc: this.__docIndex,
+            data: dataset,
+            renderings: 1,
+            delay: 0
+          })
+        });
 
+        const blob2 = await (await response2).blob();
+        const url2 = URL.createObjectURL(blob);
 
+        this.__renderedBlobSVG = blob2;
+        this.__renderedSVG = url2;
+      }
 
       console.log(this.renderedImage);
 
@@ -230,10 +237,18 @@ const app = new Vue({
     },
     download() {
       if (typeof document.createElement('a').download != "undefined") {
-        const mime = this.__activeTemplate.type == "jpg" ? "image/jpeg" : "image/png";
-        const format = this.__activeTemplate.type || "png";
+        const mime = this.mime;
 
-        download(this.__renderedBlob, "SharePic." + format, mime);
+        const format = (() => {
+          return this.__activeTemplate ? (this.__activeTemplate.type ? this.__activeTemplate.type : "png") : null;
+        })();
+        const formatType = (() => {
+          return format == "video" ? "video" : "image";
+        })();
+
+        const ext = formatType == "video" ? this.__activeTemplate.video.extension : format;
+
+        download(this.__renderedBlob, "SharePic." + ext, mime);
       }
       else {
         console.log("No support", this.renderedImage);
@@ -277,6 +292,8 @@ async function loadTemplate(template, docIndex = 0) {
     //render.data.text = ["Was ist bei dir eigentlich falsch?"]
 
     previewMain.append(render.context);
+
+    window.myRender.restartAnimations();
 
     function setRenderBoundings() {
       const svg = previewMain.getElementsByTagName("svg")[0];

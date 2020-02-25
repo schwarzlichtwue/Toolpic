@@ -1,7 +1,8 @@
 import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.esm.browser.js'
+import anime from './animejs/lib/anime.es.js'
 import EventEmitter from './EventEmitter/EventEmitter.js'
 
-import { Uint8ToBase64, getDigits } from './helpers.js'
+import { Uint8ToBase64, getDigits, nextTick } from './helpers.js'
 
 import * as helpers from './vue-resources/vue-helpers/__index.js'
 import * as directives from './vue-resources/vue-directives/__index.js'
@@ -93,6 +94,30 @@ export default class Renderer extends EventEmitter {
       }
     });
   }
+  get mainGroup() {
+    return this.context.getElementsByClassName("main")[0];
+  }
+  get elementsWithAnimation() {
+    const elements = this.mainGroup.getElementsByTagName("*");
+
+    return Array.from(elements).filter(elem => {
+      const animationNameValue = window.getComputedStyle(elem)["animation-name"];
+
+      return !["none"].includes(animationNameValue);
+    });
+  }
+  restartAnimations() {
+
+    for (let animation of this.animations) {
+      animation.restart();
+    }
+
+  }
+  seekAnimations(timestamp) {
+
+    return this.animations.map(animation => animation.seek(timestamp))
+
+  }
   async loadDoc(index) {
     // Load SVG document as text
     const doc = await (await fetch(this.__template.documents[index].src)).text();
@@ -100,10 +125,21 @@ export default class Renderer extends EventEmitter {
     // Set SVG context to inner of container element
     this.__contextContainer.innerHTML = doc;
 
+    this.context = this.__contextContainer.getElementsByTagName("svg")[0];
+
+    this.context.querySelectorAll = query => {
+      return Array.from(this.context.getElementsByTagName("*")).filter(e => {
+        return e.matches(query);
+      });
+    }
+    this.context.querySelector = query => {
+      return this.context.querySelectorAll(query)[0];
+    }
+
     const ctx = this.context;
 
     // Get group with class name 'main' as main vue element in which the vue magic will happen
-    const vueMainGroup = ctx.getElementsByClassName("main")[0];
+    const vueMainGroup = this.mainGroup;
 
     const defsContainer = document.createElementNS("http://www.w3.org/2000/svg", "defs");
 
@@ -116,6 +152,14 @@ export default class Renderer extends EventEmitter {
       defsContainer.append(fontSheet);
       this.Vue.$forceUpdate();
     });
+
+    /*if (this.__template.animations) {
+      import("./../" + this.__template.animations).then(moduleNameSpace => {
+        const animate = moduleNameSpace.default;
+
+        this.animations = animate(this.context, anime);
+      });
+    }*/
 
     // Initalize Vue.js Instance with
     this.Vue = new Vue({
@@ -135,13 +179,16 @@ export default class Renderer extends EventEmitter {
       components: components
     });
 
-
+    if (this.__template.animations) {
+      const animate = (await import("./../" + this.__template.animations)).default;
+      this.animations = animate(this.context, anime);
+    }
 
 
   }
-  get context() {
+  /*get context() {
     return this.__contextContainer.getElementsByTagName("svg")[0];
-  }
+  }*/
   static async createFontSheet(fonts) {
     const fontSheet = document.createElement("style");
 
