@@ -12,7 +12,7 @@ const app = new Vue({
   data: {
     menuOpen: true,
     templateUrls: [
-      //'data/templates/plakat2102/template.json',
+      'data/templates/plakat2102/template.json',
       //'data/templates/map1701/template.json',
       //'data/templates/profile/bielefeld1302/template.json',
       'data/templates/date-2/template.json',
@@ -42,7 +42,12 @@ const app = new Vue({
     __renderedBlob: null,
     renderedImage: null,
     __renderedBlobSVG: null,
-    __renderedSVG: null
+    __renderedSVG: null,
+    progress: {
+      handling: 0,
+      rendering: 0,
+      processing: 0
+    }
   },
   asyncComputed: {
     async templates() {
@@ -50,6 +55,25 @@ const app = new Vue({
       const allPromise = Promise.all((await Promise.all(fetchings)).map(response => response.json()));
 
       return await allPromise;
+    },
+    currentProgressKey() {
+      for (let key in this.progress) {
+        if (this.progress.hasOwnProperty(key)) {
+          if (this.progress[key] < 1) {
+            return key;
+          }
+        }
+      }
+    },
+    currentProgress() {
+      return this.progress[this.currentProgressKey];
+    },
+    currProgressLabel() {
+      return ({
+        "handling": "Handling",
+        "rendering": "Rendering",
+        "processing": "Processing"
+      })[this.currentProgressKey];
     }
   },
   computed: {
@@ -176,8 +200,28 @@ const app = new Vue({
         return this.__activeTemplate ? (this.__activeTemplate.type ? this.__activeTemplate.type : "png") : null;
       })();
 
+      const timestamp = Date.now();
 
-      const response1 = await fetch(endpoint + "/" + format, {
+      const progressChecker = (() => {
+        const endpoint = 'https://api.fridaysforfuture.de/progress/' + timestamp;
+
+        return setInterval(async () => {
+          const response = await fetch(endpoint);
+          const progress = await response.json();
+
+          console.log(progress);
+
+          for (let key in progress) {
+            if (progress.hasOwnProperty(key)) {
+              this.progress[key] = progress[key];
+            }
+          }
+        }, 1000);
+      })();
+
+
+
+      const response1 = await fetch(endpoint + "/" + format + "?timestamp=" + timestamp, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -196,6 +240,8 @@ const app = new Vue({
       const blob = await response1.blob();
       const url = URL.createObjectURL(blob);
 
+      clearInterval(progressChecker);
+
       this.__renderedBlob = blob;
       this.renderedImage = url;
       this.mime = responseMime;
@@ -205,6 +251,8 @@ const app = new Vue({
       const formatType = (() => {
         return format == "video" ? "video" : "image";
       })();
+
+
 
 
 
@@ -265,6 +313,98 @@ const app = new Vue({
         //openTab(this.renderedImage);
         window.open(this.renderedSVG, '_blank');
       }
+    }
+  },
+  components: {
+    'progress-circle': {
+      props: ["value", "radius"],
+      data: function () {
+        return {
+          transitionDuration: 1000,
+          __lastValue: {
+            value: 0,
+            timestamp: null
+          },
+          dynVal: 0
+        }
+      },
+      methods: {
+        getDynamicValue() {
+          const now = Date.now();
+          const diffTime = now - this.__lastValue.timestamp;
+          const diffVal = this.val - this.__lastValue.value;
+
+          if (diffVal >= 0) {
+            const valueProgress = Math.min(diffTime / this.transitionDuration, 1);
+
+            return this.__lastValue.value + diffVal * valueProgress;
+          }
+          else {
+            return this.val;
+          }
+        }
+      },
+      computed: {
+        val() {
+          var val = Number(this.value);
+          val = val >= 1 ? 0.99999999 : val;
+          return val + 1 > val ? val : 0;
+        },
+        r() {
+          return Number(this.radius) || 50;
+        },
+        renderValue() {
+          return this.dynVal;
+        },
+        coords() {
+          const viewBox = [0, 0, 100, 100];
+
+          const angle = Math.PI * 2 * this.renderValue;
+
+
+          return {
+            x: this.r * Math.sin(angle),
+            y: this.r * Math.cos(angle)
+          };
+        },
+        points() {
+          return {
+            stroked: 'M 0,' + -this.r + ' A ' + this.r + ',' + this.r + ' 0 ' + Number(this.renderValue >= 0.5) + ' 1 ' + this.coords.x + ',' + -this.coords.y,
+            filled: 'M 0,0 L 0,' + -this.r + ' A ' + this.r + ',' + this.r + ' 0 ' + Number(this.renderValue >= 0.5) + ' 1 ' + this.coords.x + ',' + -this.coords.y + ' z'
+          }
+        }
+      },
+      mounted() {
+        console.log(this.coords);
+      },
+      watch: {
+        val(newVal, oldVal) {
+
+          this.__lastValue = {
+            value: oldVal,
+            timestamp: Date.now()
+          }
+          var start = null;
+          const step = timestamp => {
+            if (!start) start = timestamp;
+            var progress = timestamp - start;
+
+            this.dynVal = this.getDynamicValue();
+
+            if (progress < this.transitionDuration) {
+              window.requestAnimationFrame(step);
+            }
+          }
+          window.requestAnimationFrame(step);
+        }
+      },
+      template: `
+        <div class="progress-circle">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 100 100">
+            <path v-bind:d="points.stroked" />
+          </svg>
+        </div>
+      `
     }
   }
 });

@@ -108,8 +108,10 @@ export default class Renderer extends EventEmitter {
   }
   restartAnimations() {
 
-    for (let animation of this.animations) {
-      animation.restart();
+    if (this.animations) {
+      for (let animation of this.animations) {
+        animation.restart();
+      }
     }
 
   }
@@ -180,9 +182,14 @@ export default class Renderer extends EventEmitter {
     });
 
     if (this.__template.animations) {
-      const animate = (await import("./../" + this.__template.animations)).default;
-      this.animations = animate(this.context, anime);
+      this.__animate = (await import("./../" + this.__template.animations)).default;
+      this.animations = this.__animate(this.context, anime, this.data);
     }
+
+    this.on("set", () => {
+      console.log(this.animations);
+      //this.animations = this.__animate(this.context, anime, this.data);
+    });
 
 
   }

@@ -140,10 +140,17 @@
             <img v-if="renderedImage && activeTemplate.type != 'video'" v-bind:src="renderedImage" alt="Rendered SharePic">
             <video controls autoplay v-if="renderedImage && activeTemplate.type == 'video' && mime == 'video/mp4'" v-bind:src="renderedImage"></video>
             <div v-if="!renderedImage" class="spinner">
-              <div class="fff-spinner">
+              <!--<div class="fff-spinner">
                 <div class="inner-circle">
                   <img src="data/resources/logo-new-spinner.svg" alt="#FFF">
                 </div>
+              </div>-->
+              <div class="progress-spinner">
+                <img src="data/resources/logo-new-spinner.svg" alt="#FFF" class="inner-image">
+                <progress-circle v-bind:value="currentProgress" radius="47.5"></progress-circle>
+              </div>
+              <div class="action-label">
+                {{ currProgressLabel }}
               </div>
               <!--<div class="sk-cube-grid">
                 <div class="sk-cube sk-cube1"></div>

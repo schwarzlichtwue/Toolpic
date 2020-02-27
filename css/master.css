@@ -480,8 +480,6 @@ html {
   }
 }
 
-
-
 .component-popup {
   position: fixed;
   left: 0px;
@@ -556,4 +554,60 @@ html {
   width: 5px;
   background-color: #177d39;
 
+}
+
+
+.spinner {
+  width: 200px;
+  height: 100%;
+  height: auto;
+  position: fixed;
+  left: calc(50% - 100px);
+  top: calc(50% - 110px);
+}
+.spinner .action-label {
+  margin: 5px 0;
+  color: #fff;
+  font-family: 'Helvetica Neue', 'Helvetica', sans-serif;
+  font-weight: 200;
+  letter-spacing: 0.5px;
+}
+.spinner .action-label:after {
+  content: "...";
+}
+
+.progress-spinner {
+  width: 200px;
+  height: 200px;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.5));
+}
+.progress-spinner > * {
+  position: absolute;
+}
+
+.progress-spinner .inner-image {
+  width: calc(200px - 20px);
+  height: calc(200px - 20px);
+  left: 10px;
+  top: 10px;
+  border-radius: 50%;
+  background-color: rgba(27, 115, 64, 1);
+}
+.progress-spinner .progress-circle {
+  width: 200px;
+  height: 200px;
+  left: 0;
+  top: 0;
+}
+.progress-circle {
+
+}
+.progress-circle svg {
+  width: 100%;
+  height: 100%;
+}
+.progress-circle svg > path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 5px;
 }

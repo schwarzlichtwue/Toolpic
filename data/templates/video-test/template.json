@@ -5,7 +5,7 @@
   "animations": "data/templates/video-test/animate.js",
   "type": "video",
   "video": {
-    "duration": 1500,
+    "duration": 2000,
     "frameRate": 24,
     "vcodec": "libx264",
     "pix_fmt": "yuv420p",

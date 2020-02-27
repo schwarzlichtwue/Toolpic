@@ -3,8 +3,8 @@
   <g class="main">
 
 
-    <g class="testElement1" style="transform-origin: 960px 540px;">
-      <svg class="testElement1" width="200" height="200" x="860" y="440" style="opacity: 0;" viewBox="0 0 1500 1500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g class="testElement1" style="transform-origin: 960px 540px; opacity: 0; transform: scale(0);">
+      <svg width="200" height="200" x="860" y="440" viewBox="0 0 1500 1500" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
 
 
           <g class="main">
