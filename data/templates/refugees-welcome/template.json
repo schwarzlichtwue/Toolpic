@@ -1,0 +1,71 @@
+{
+  "name": "Refugees Welcome",
+  "root": "https://toolpic.fridaysforfuture.de/sharepic/templates/refugees-welcome/template.json",
+  "preview": "data/templates/refugees-welcome/preview.jpg",
+  "type": "png",
+  "documents": [{
+    "width": 1200,
+    "height": 1200,
+    "src": "data/templates/refugees-welcome/document.svg",
+    "alias": "1:1"
+  }],
+  "fonts": [{
+      "name": "Jost",
+      "src": "fonts/jost.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Jost-900-Black",
+      "src": "fonts/Jost/Jost-900-Black.ttf",
+      "mime": "font/truetype"
+    },
+    {
+      "name": "Merriweather",
+      "src": "fonts/Merriweather Sans.ttf",
+      "mime": "font/truetype"
+    }
+  ],
+  "fields": [
+
+    {
+      "type": "Line",
+      "description": "Title",
+      "key": "title",
+      "default": "Würzburg",
+      "properties": {
+
+      }
+
+    },
+    {
+      "type": "Checklist",
+      "description": "Optionen",
+      "key": "options",
+      "default": [false],
+      "properties": {
+        "fields": [
+          "Schwarzer Hintergrund"
+        ]
+      }
+    },
+    {
+      "type": "Selection",
+      "description": "Surface",
+      "key": "surface",
+      "default": 0,
+      "properties": {
+        "items": [{
+            "type": "value",
+            "value": 0,
+            "render": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB2ZXJzaW9uPSIxLjEiPgogIDxjaXJjbGUgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIiBmaWxsPSIjMUYxRjFGIiAvPgo8L3N2Zz4K"
+          },
+          {
+            "type": "value",
+            "value": 1,
+            "render": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxMDAgMTAwIiB2ZXJzaW9uPSIxLjEiPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMxRjFGMUYiIC8+Cjwvc3ZnPgo="
+          }
+        ]
+      }
+    }
+  ]
+}

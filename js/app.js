@@ -32,7 +32,8 @@ const app = new Vue({
       //'data/templates/support/template.json',
       //'data/templates/flyer2911/template.json',
       'data/templates/thanks/template.json',
-      'data/templates/video-test/template.json'
+      'data/templates/video-test/template.json',
+      'data/templates/refugees-welcome/template.json'
     ],
     timestamp: 0,
     __docIndex: 0,
